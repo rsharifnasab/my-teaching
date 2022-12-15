@@ -29,7 +29,7 @@ paginate: true
 
 -   easily manage collaboration on a project
 -   ability to have an unlimited number of developers
--   revert back changes if something goes wrong
+-   revert changes if something goes wrong
 
 ------------------
 
@@ -80,9 +80,9 @@ paginate: true
 
 # how to use git
 
-1. search!
-2. I search too
-3. everybody else does search too
+1. Search!
+2. I Search, too
+3. everybody else does Search too.
 
 ------------------
 
@@ -102,20 +102,20 @@ paginate: true
 
 # In-depth
 
-+ is git **running** in background?
++ Is Git **running** in the background?
 
--   what if we change a file twice?
--   what does **tracking** mean?
--   what if I uninstall git?
--   what about deleting `.git`?
+-   What if we change a file twice?
+-   What does **tracking** mean?
+-   What if I uninstall git?
+-   What about deleting `.git`?
 
 ------------------
 
-# Best pratices
+# Best practices
 
-+ I just wrote a line of code, should I commit? ([atomic commits](https://dev.to/paulinevos/atomic-commits-will-help-you-git-legit-35i7))
-+ should I commit on a timely basis?
-+ what to write in commit message?  ([fun](https://whatthecommit.com/)) ([conventional](https://gist.github.com/qoomon/5dfcdf8eec66a051ecd85625518cfd13))
++ I just wrote a line of code; should I commit? ([atomic commits](https://dev.to/paulinevos/atomic-commits-will-help-you-git-legit-35i7))
++ Should I commit on a timely basis?
++ What to write in the commit message?  ([fun](https://whatthecommit.com/)) ([conventional](https://gist.github.com/qoomon/5dfcdf8eec66a051ecd85625518cfd13))
 + aliases
 
 ------------------
@@ -136,7 +136,7 @@ paginate: true
 
 # Merge conflict
 
--   what if we can't merge?
+-   What if we can't merge?
 -   some developers changed the same file
 -   somebody should merge 2 versions 
 -   with the help of a merge-tool
@@ -148,8 +148,8 @@ paginate: true
 # Git HEAD
 
 + a pointer to a commit 
-+ current state of working dir
-+ where are other commits?
++ the current state of working dir
++ where are the other commits?
 
 ![bg fit right](https://static.javatpoint.com/tutorial/git/images/git-head.png)
 
@@ -199,11 +199,11 @@ paginate: true
 
 ------------------
 
-# Github
+# GitHub
 
 - Instagram for git
 
-- a place to keep git projects, review them, fork them, star them.
+- a place to keep git projects, review them, fork them, and star them.
 
 - alternatives: Gitlab, Bitbucket, and more
 
@@ -212,19 +212,19 @@ paginate: true
 ------------------
 
 # Gist
-+  some part of code to share with others
++  some parts of code to share with others
 +  not the whole program, just code snippets
-+  normally we do not use them.
++  it is not common
 +  nor big projects, nor small ones do not have gists.
-+  for example: [a cheat sheet](https://gist.github.com/mayazdi/9c3fc4f6e9828a803be757d177cea8e1)
++  for example [a cheat sheet](https://gist.github.com/mayazdi/9c3fc4f6e9828a803be757d177cea8e1)
 
 ------------------
 
 # Push? Remote? Clone?
 
 -   remote: where should I upload my git projects
--   push: act of uploading git
--   clone: download whole git
+-   push: the act of uploading the git project
+-   clone: download the whole git project
 -   pull: check for updates in the remote git
 
 ![bg contain horizontal right](images/push-meme.png)
@@ -241,8 +241,6 @@ paginate: true
 # PR
 
 ![bg contain ](images/PR.png)
-
-
 
 
 ------------------
@@ -266,7 +264,7 @@ paginate: true
 
 -   .git: local and hidden folder that contains git internal files, don't open it!
 
--   .gitignore: ignore these sort of files
+-   .gitignore: ignore these sorts of files
 
 ```
 *.class
@@ -276,16 +274,16 @@ __pycache__/
 
 Good site: [gitignore.io](https://www.gitignore.io/)
 
-####  do not commit large and binary files! Why?
+####  Do not commit large and binary files! Why?
 
 ------------------
 
 
 # tag
 
--   commits doesn't have a name
--   specify special commits
--   which commit is last working version?
+-   commits don't have a name
+-   to specify particular commits
+-   which commit is the last working version?
 -   how to handle versions?
 
 - read more [here](https://www.atlassian.com/git/tutorials/inspecting-a-repository/git-tag)
@@ -300,7 +298,7 @@ Good site: [gitignore.io](https://www.gitignore.io/)
 -   change commit message
 -   change committed files
 
-### don't rewrite history (especially for published commits)
+### don't re-write history (especially for published commits)
 
 ------------------
 
@@ -335,7 +333,7 @@ Good site: [gitignore.io](https://www.gitignore.io/)
 -   combine history with adding old commits
 -   interactive mode: select some commits
 -   be careful: might re-write history
--   don't do this in public branches, or junior development team.
+-   don't do this in public branches or junior development teams.
 
 ![fit right bg](https://miro.medium.com/max/603/1*75GIyh005_Wl9vRQF3tgTQ.png)
 
@@ -347,13 +345,13 @@ Good site: [gitignore.io](https://www.gitignore.io/)
 
 -   not a git command
 -   a term in using rebase
--   group specific changes to one commit
+-   group-specific changes to one commit
 
 ------------------
 
 # cherry-pick
 
--   add other branch's commit to current branch
+-   add other branch's commit to the current branch
 
 ![](https://www.syntevo.com/doc/download/attachments/6979705/workflows-cherrypick.png?version=1&modificationDate=1443735398000&api=v2)
 
@@ -450,7 +448,7 @@ rm -rf .git # get rid of git!
 -   test new commands in a toy repository
 -   don't commit large files
 -   don't re-write public history
--   pull before push, even better, pull before start coding
+-   pull before push, even better, pull before starting coding
 -   alias for your useful command could be good
 
 ------------------
@@ -459,9 +457,9 @@ rm -rf .git # get rid of git!
 
 -   [Interactive learning](https://learngitbranching.js.org/)
 -   [Amir's awesome slides](https://github.com/amirhallaji/My-Learning/tree/master/git)
--   [very good cheat sheet](https://github.com/arslanbilal/git-cheat-sheet)
--   [this Github io page](https://rachelcarmena.github.io/2018/12/12/how-to-teach-git.html)
--   [command by command explain](https://recompilermag.com/issues/issue-1/how-to-teach-git/)
+-   [perfect cheat sheet](https://github.com/arslanbilal/git-cheat-sheet)
+-   [this GitHub io page](https://rachelcarmena.github.io/2018/12/12/how-to-teach-git.html)
+-   [command by command, explain](https://recompilermag.com/issues/issue-1/how-to-teach-git/)
 -   [Jadi's videos](https://faradars.org/courses/fvgit9609-git-github-gitlab)
 -   [step by step](https://dont-be-afraid-to-commit.readthedocs.io/en/latest/git/commandlinegit.html)
 -   [this good slide](https://courses.cs.washington.edu/courses/cse403/13au/lectures/git.ppt.pdf)
