@@ -1,60 +1,34 @@
-# Git!
+Git!
 
 > Git (/git/)[7] is a distributed version-control system for tracking changes in source code during software development.
 
-# Table Of Contents
-
--   current problems
--   what is version control?
--   more about git
--   distributed vs centralized
--   how to use git
--   file status life cycle
--   Github
--   Push? Remote? Clone?
--   fork, PR, issue
--   .gitignore, .git
--   branch, merge
--   checkout
--   tag
--   amend
--   stash
--   revert
--   bisect
--   rebase
--   squash
--   Chery-pick
--   git flow
--   common commands
--   conclusion
--   further read
-
-# what do we do now? Manual version controlling by programmer
+# Manual version control 
 
 ![](images/trad.png)
 
-# problems
+# Problems
 
--   copy-paste/save-as whole project after every stable build
--   what if more than 1 developer work at the same time?
--   which version was stable?
--   all files are unnecessary while saving as?
+-   save-as whole project 
+-   collaboration
+-   last stable version
+-   space inefficiency
+-   tracking changes
 
-# benefits of version control
+# Benefits of version control
 
--   easily management collaboration on a project
--   ability to have unlimited number of developers
--   easily revert back your files if something went wrong
+-   easily manage collaboration on a project
+-   ability to have an unlimited number of developers
+-   revert back changes if something goes wrong
 
 # SVN (by Apache)
 
-![](https://upload.wikimedia.org/wikipedia/en/thumb/9/9f/Subversion_Logo.svg/1200px-Subversion_Logo.svg.png)
+![](https://www.paulocollares.com.br/wp-content/uploads/2019/04/213-2134650_svn-logo-png-apache-subversion-logo.jpg)
 
 # Visual Studio Team Services code (by Microsoft)
 
 ![](https://logodix.com/logo/719944.png)
 
-# git (by Linus Torvalds)
+# Git (by Linus Torvalds)
 
 ![](https://files.virgool.io/upload/users/4458/posts/q85kpw57vte6/quvbhkgvelb5.jpeg)
 
@@ -62,14 +36,14 @@
 
 ![](images/tux.png)
 
-# git features
+# Git features
 
 -   free and open source
 -   distributed
 -   non-linear (branches)
 -   handle large projects efficiently
 
-![](https://zdnet2.cbsistatic.com/hub/i/2017/11/24/6e389aa3-a510-4254-9f1e-965e0a6f036e/linustorvalds770x57.jpg)
+![](./images/Linus-Torvalds.jpg)
 
 # Centralized version control
 
@@ -89,17 +63,114 @@
 
 ![](https://slideplayer.com/slide/13332433/80/images/17/Git+file+lifecycle.jpg)
 
+# Hands-on
+
++ initialize git
++ write some code
++ add, commit
++ status
++ checkout to another commit
+
+# In-depth
+
++ is git **running** in background?
+
+-   what if we change a file twice?
+-   what does **tracking** mean?
+-   what if I uninstall git?
+-   what about deleting `.git`?
+
+# Best pratices
+
++ I just wrote a line of code, should I commit? ([atomic commits](https://dev.to/paulinevos/atomic-commits-will-help-you-git-legit-35i7))
++ should I commit on a timely basis?
++ what to write in commit message?  ([fun](https://whatthecommit.com/)) ([conventional](https://gist.github.com/qoomon/5dfcdf8eec66a051ecd85625518cfd13))
++ aliases
+
+# Branch
+
++ working on a feature
++ separate different programmers' work
++ do not mess up the main/master branch
+
+![](./images/git-branches-merge.png)
+
+# Merge
+
+![](https://res.cloudinary.com/practicaldev/image/fetch/s--MEKaM3dY--/c_imagga_scale,f_auto,fl_progressive,h_900,q_auto,w_1600/https://cl.ly/430Q2w473e2R/Image%25202018-04-30%2520at%25201.07.58%2520PM.png)
+
+# Merge conflict
+
+-   what if we can't merge?
+-   some developers changed the same file
+-   somebody should merge 2 versions 
+-   with the help of a merge-tool
+
+![](https://lh6.googleusercontent.com/proxy/EXZtnMuZcVrMmQ1YJ1vdyoadiEy-FQtUocRc5mWiOqUgcxp5SlJ-T-Bs8dFERfxym7E7U6SebY1PJRx9OYPJ5gtFrDPMMFF-)
+
+
+
+# Git HEAD
+
++ a pointer to a commit 
++ current state of working dir
++ where are other commits?
+
+# Checkout
+
+- switch to another branch (prefer `switch`)
+
+- reset a file to a specific commit version
+
+  ![checkout](https://static.javatpoint.com/tutorial/git/images/git-checkout.png)
+
+
+
+# Branching best pratcies
+- git flow
+  - stable master branch
+  - development branch
+  - feature branch
+  - release
+  - hot-fix branch
+
+- Trunk-based
+  - DevOps friendly
+  - merge small, frequent updates
+  - core trunk = main branch
+    checkout [this link](https://www.atlassian.com/continuous-delivery/continuous-integration/trunk-based-development)
+
+
+![](./images/trunk-vs-flow.jpg)
+
+
+
+# Hands-on
+
++ create another branch 
++ checkout to another branch
++ add commits to different branches
++ merge changes
++ solve a merge conflict
+
+
+
 # Github
 
--   instagram for git
+-   Instagram for git
 
 -   a place to keep git projects, review them, fork them, star them.
 
--   alternatives: Gitlab, Bitbucket, any other place
+-   alternatives: Gitlab, Bitbucket, and more
 
-    ![](https://blog.devmountain.com/wp-content/uploads/2019/07/Gitvs.Github-1a.jpg)
+    ![](https://devmountain.com/wp-content/uploads/2022/01/Gitvs_Github-1a-1.jpg)
 
-#### gist: some part of code to share with others
+# Gist
++  some part of code to share with others
++  not the whole program, just code snippets
++  normally we do not use them.
++  nor big projects, nor small ones do not have gists.
++  for example: [a cheat sheet](https://gist.github.com/mayazdi/9c3fc4f6e9828a803be757d177cea8e1)
 
 # Push? Remote? Clone?
 
@@ -119,6 +190,10 @@
 # PR
 
 ![](images/PR.png)
+
+#### Want a review? Check [this](https://medium.com/hackernoon/a-gentle-introduction-to-git-and-github-the-eli5-way-43f0aa64f2e4)
+
+
 
 # issue, issue template
 
@@ -144,44 +219,7 @@ Good site: [gitignore.io](https://www.gitignore.io/)
 
 ---
 
-# is git running in background?
 
--   background process?
--   what is **tracking** mean?
-
-# branch
-
-![](https://www.nobledesktop.com/image/gitresources/git-branches-merge.png)
-
--   keep master branch stable
--   development branch
--   feature branch
--   bug-fix branch
-
-![](./images/favorite-branch.png)
-
-# merge
-
-![](https://res.cloudinary.com/practicaldev/image/fetch/s--MEKaM3dY--/c_imagga_scale,f_auto,fl_progressive,h_900,q_auto,w_1600/https://cl.ly/430Q2w473e2R/Image%25202018-04-30%2520at%25201.07.58%2520PM.png)
-
-# merge conflict
-
--   what if we can merge?
--   some developers changed same file
--   somebody should combine changes
--   with help of merge-tool
-
-![](https://lh6.googleusercontent.com/proxy/EXZtnMuZcVrMmQ1YJ1vdyoadiEy-FQtUocRc5mWiOqUgcxp5SlJ-T-Bs8dFERfxym7E7U6SebY1PJRx9OYPJ5gtFrDPMMFF-)
-
-#### didn't understand? Want a review? View [this](https://medium.com/hackernoon/a-gentle-introduction-to-git-and-github-the-eli5-way-43f0aa64f2e4)
-
-# checkout
-
--   switch another branch
--   view an old commit
--   reset a file to a specific commit version
-
-![checkout](https://static.javatpoint.com/tutorial/git/images/git-checkout.png)
 
 # tag
 
@@ -243,24 +281,7 @@ Good site: [gitignore.io](https://www.gitignore.io/)
 
 ![](https://www.syntevo.com/doc/download/attachments/6979705/workflows-cherrypick.png?version=1&modificationDate=1443735398000&api=v2)
 
-# git flow
 
--   whats masters do with git branches?
-
--   set of rules to use branching better
-
-    ![](https://miro.medium.com/max/2880/1*9yJY7fyscWFUVRqnx0BM6A.png)
-
-    +   Master is production ready
-
-    +   Master is deployed to production
-    +   Development happens in a development branch, which in turn has feature branches
-    +   Deploy when the development of a release is finished and validated
-    +   Requires a validation for each release
-
--   automated tools: set of aliases
-
--   nothing to worry about
 
 # common commands
 
@@ -345,7 +366,7 @@ rm -rf .git # get rid of git!
 -   [step by step](https://dont-be-afraid-to-commit.readthedocs.io/en/latest/git/commandlinegit.html)
 -   [this good slide](https://courses.cs.washington.edu/courses/cse403/13au/lectures/git.ppt.pdf)
 -   [tags](https://www.atlassian.com/git/tutorials/inspecting-a-repository/git-tag)
--   [git-scm](https://git-scm.com/)
+-   [cheatsheet](https://www.pauline-vos.nl/git-legit-cheatsheet/)
 ---
 
 Make PDF from this markdown file:
