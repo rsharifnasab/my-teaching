@@ -336,7 +336,7 @@ rm -rf .git # get rid of git!
 
 # further read
 
--   [Parsa's really good slides](http://slides.com/parsahejabi/git#/1)
+-   [Interactive learning](https://learngitbranching.js.org/)
 -   [Amir's awesome slides](https://github.com/amirhallaji/My-Learning/tree/master/git)
 -   [very good cheat sheet](https://github.com/arslanbilal/git-cheat-sheet)
 -   [this Github io page](https://rachelcarmena.github.io/2018/12/12/how-to-teach-git.html)
@@ -346,11 +346,10 @@ rm -rf .git # get rid of git!
 -   [this good slide](https://courses.cs.washington.edu/courses/cse403/13au/lectures/git.ppt.pdf)
 -   [tags](https://www.atlassian.com/git/tutorials/inspecting-a-repository/git-tag)
 -   [git-scm](https://git-scm.com/)
-
 ---
 
 Make PDF from this markdown file:
 
 ```bash
-pandoc git.md -t beamer -o panc.pdf --pdf-engine=xelatex
+pandoc README.md -t beamer -o output.pdf --pdf-engine=xelatex
 ```
