@@ -118,6 +118,11 @@ paginate: true
 + What to write in the commit message?  ([fun](https://whatthecommit.com/)) ([conventional](https://gist.github.com/qoomon/5dfcdf8eec66a051ecd85625518cfd13))
 + aliases
 
+-----------------
+
+![bg contain horizontal](./images/commit-meme.jpg)
+![bg contain horizontal](./images/commit-meme-2.jpg)
+
 ------------------
 
 # Branch
@@ -127,6 +132,10 @@ paginate: true
 + do not mess up the main/master branch
 
 ![bg h:309 right](./images/git-branches-merge.png)
+
+----------
+
+![bg contain](./images/branching.jpg)
 
 ------------------
 
@@ -450,6 +459,14 @@ rm -rf .git # get rid of git!
 -   don't re-write public history
 -   pull before push, even better, pull before starting coding
 -   alias for your useful command could be good
+
+------------------
+
+![bg contain](./images/re-clone.jpg)
+
+-----------------
+
+![bg contain](./images/collaboration.jpg)
 
 ------------------
 
