@@ -11,7 +11,7 @@ paginate: true
 
 # Manual version control 
 
-![bg right 100% ](images/trad.png)
+![bg right 100%](images/trad.png)
 
 ------------------
 
