@@ -7,9 +7,13 @@ paginate: true
 
 > Git (/git/)[7] is a distributed version-control system for tracking changes in source code during software development.
 
+
+**By Roozbeh Sharifnasab**
+rsharifnasab@gmail.com
+
 ------------------
 
-# Manual version control 
+# Manual version control
 
 ![bg right 100%](images/trad.png)
 
@@ -200,7 +204,7 @@ paginate: true
 
 # Hands-on
 
-+ create another branch 
++ create another branch
 + checkout to another branch
 + add commits to different branches
 + merge changes
@@ -256,25 +260,25 @@ paginate: true
 
 # Hands-on
 
-
 + Want a review? [Check this](https://medium.com/hackernoon/a-gentle-introduction-to-git-and-github-the-eli5-way-43f0aa64f2e4)
+
++ A cheat sheet? [Check this](https://github.com/arslanbilal/git-cheat-sheet)
 
 ![bg contain horizontal right](https://res.cloudinary.com/practicaldev/image/fetch/s--NUSRQ-3J--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://i.redd.it/5iphhycu0io11.png)
 
 
 ------------------
 
-
-![bg fit contain ](https://github.blog/wp-content/uploads/2018/05/new-issue-page-with-multiple-templates.png?fit=1604%2C694)
+<!-- Issue -->
+![bg fit contain](https://github.blog/wp-content/uploads/2018/05/new-issue-page-with-multiple-templates.png?fit=1604%2C694)
 
 ------------------
 
 # .gitignore, .git
 
--   .git: local and hidden folder that contains git internal files, don't open it!
+- .git: local folder that contains git internal files (don't open it!)
 
--   .gitignore: ignore these sorts of files
-
+- .gitignore: which files shoule be ignored by git?
 ```
 *.class
 .idea/
@@ -283,89 +287,171 @@ __pycache__/
 
 Good site: [gitignore.io](https://www.gitignore.io/)
 
-####  Do not commit large and binary files! Why?
+-------------------
+
+## File to ignore
++ Blob files
++ Auto-generated files
++ IDE-specific files
++ Assets?
++ Passwords?
+
+![bg fit contain right vertical](https://i.redd.it/tfugj4n3l6ez.png)
+![bg fit contain right vertical](https://preview.redd.it/w4z3syuu3rv71.jpg?auto=webp&s=86ef09642888095b740b01ab0570487307449fff)
 
 ------------------
 
 
-# tag
+# Tag
 
--   commits don't have a name
--   to specify particular commits
--   which commit is the last working version?
--   how to handle versions?
+- Commits don't have a name
+- How to specify commits
+- which commit was the last stable version?
+- How to handle versions?
 
 - read more [here](https://www.atlassian.com/git/tutorials/inspecting-a-repository/git-tag)
 
-![bg fit right](https://miro.medium.com/max/638/1*CW-G-2zVFpEfEZNOTBvT0g.jpeg)
+![bg fit right](./images/tag.webp)
 
 ------------------
 
-# amend
+# Fetch VS Pull
 
--   re-writing history
--   change commit message
--   change committed files
++ Pull = Fetch + merge
++ Just merge?
++ What if we don't merge
 
-### don't re-write history (especially for published commits)
+![bg fit right vertical](https://rachelcarmena.github.io/img/cards/posts/how-to-teach-Git/fetch.png)
+![bg fit right vertical](https://rachelcarmena.github.io/img/cards/posts/how-to-teach-Git/pull.png)
+
+-----------------
+
+# History
++ Once again, why are we controlling version?
++ What was my last version?
++ Who/When did this chage?
+
+![bg fit right contain](https://res.cloudinary.com/practicaldev/image/fetch/s---vCBqatm--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://thepracticaldev.s3.amazonaws.com/i/48schr7iqawvz6skkkbb.png)
 
 ------------------
 
-# stash
+# Revert
 
--   save uncommitted changes
--   different options for uncommitted, ignored, staged
+- Undo last commit changes
+
+- With a brand-new commit
+
+![fit right bg](https://www.blog.nakulrajput.com/wp-content/uploads/2018/10/Git-Reverting-Resetting.jpg)
+
+----------------
+
+# Amend
+
+Change latest commit
+    - commit message
+    - or even committed files
+
+![bg fit contain right](https://www.w3docs.com/uploads/media/default/0001/03/998b9219a5a05a184c9e3905b0714880537ee1a7.png)
+
+#rewrite_history
+
+------------------
+
+# Rebase
+
+- Another way of merge
+- Combine history by adding old commits
+- Not suitable for juniors
+- learn more [here](https://www.atlassian.com/git/tutorials/merging-vs-rebasing)
+- Linear history
+
+![fit right contain bg](./images/rebase.png)
+
+#rewrite_history
+
+------------------
+
+# Interactive Rebase
+
+- Select recent some commits to edit
+- Squash
+    - not a git command
+    - a term in using rebase
+    - group specific changes to one commit
+
+------------------
+
+# Force push
+
++ Don't re-write history
+    + Published commits
+    + Master branch
+
+![bg contain fit right](https://www.mememaker.net/static/images/memes/3914636.jpg)
+
+-----------------
+
+# Stash
+
+- save uncommitted changes
+- What to do for
+    + uncommitted
+    + ignored
+    + staged
 
 ![fit right bg](https://static.javatpoint.com/tutorial/git/images/git-stash.png)
 
 ------------------
 
-# revert
-
--   undo last commit changes
-
--   with a brand-new commit
-
-![fit right bg](https://www.blog.nakulrajput.com/wp-content/uploads/2018/10/Git-Reverting-Resetting.jpg)
-
-------------------
-
-# bisect
+# Bisect
 
 ![fit bg 80%](https://files.virgool.io/upload/users/195916/posts/kiybjsojv6cf/amufcdey5v9x.png)
 
 ------------------
 
-# rebase
+# Cherry-pick
 
--   instead of merge
--   combine history with adding old commits
--   interactive mode: select some commits
--   be careful: might re-write history
--   don't do this in public branches or junior development teams.
+- add other branch's commit to the current branch
 
-![fit right bg](https://miro.medium.com/max/603/1*75GIyh005_Wl9vRQF3tgTQ.png)
-
-### learn more [here](https://www.atlassian.com/git/tutorials/merging-vs-rebasing)
+![bg fit contain right](https://res.cloudinary.com/practicaldev/image/fetch/s--jmZDSObz--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://dev-to-uploads.s3.amazonaws.com/i/dmb185yxo5umin72abyr.jpg)
 
 ------------------
 
-# squash
+# conclusion
 
--   not a git command
--   a term in using rebase
--   group-specific changes to one commit
+- Search & use help & read documentation
+- Don't panic
+- Test new commands in a toy repository
+- Don't commit large files
+- Don't re-write public history
+- Pull before push, even better, pull before starting coding
+- Alias for your useful command
+
+------------------
+
+![bg contain](./images/re-clone.jpg)
+
+-----------------
+
+![bg contain](./images/collaboration.jpg)
 
 ------------------
 
-# cherry-pick
+# further read
 
--   add other branch's commit to the current branch
-
-![](https://www.syntevo.com/doc/download/attachments/6979705/workflows-cherrypick.png?version=1&modificationDate=1443735398000&api=v2)
-
+-   [Interactive learning](https://learngitbranching.js.org/)
+-   [Amir's awesome slides](https://github.com/amirhallaji/My-Learning/tree/master/git)
+-   [perfect cheat sheet](https://github.com/arslanbilal/git-cheat-sheet)
+-   [this GitHub io page](https://rachelcarmena.github.io/2018/12/12/how-to-teach-git.html)
+-   [command by command, explain](https://recompilermag.com/issues/issue-1/how-to-teach-git/)
+-   [Jadi's videos](https://faradars.org/courses/fvgit9609-git-github-gitlab)
+-   [step by step](https://dont-be-afraid-to-commit.readthedocs.io/en/latest/git/commandlinegit.html)
+-   [this good slide](https://courses.cs.washington.edu/courses/cse403/13au/lectures/git.ppt.pdf)
+-   [cheatsheet](https://www.pauline-vos.nl/git-legit-cheatsheet/)
 
 ------------------
+
+
 
 
 # common commands
@@ -446,41 +532,6 @@ info git-add
 
 rm -rf .git # get rid of git!
 ```
-
-------------------
-
-# conclusion
-
--   search & use help & read documentation
--   don't fear
--   everything messed up: re-clone!
--   test new commands in a toy repository
--   don't commit large files
--   don't re-write public history
--   pull before push, even better, pull before starting coding
--   alias for your useful command could be good
-
-------------------
-
-![bg contain](./images/re-clone.jpg)
-
------------------
-
-![bg contain](./images/collaboration.jpg)
-
-------------------
-
-# further read
-
--   [Interactive learning](https://learngitbranching.js.org/)
--   [Amir's awesome slides](https://github.com/amirhallaji/My-Learning/tree/master/git)
--   [perfect cheat sheet](https://github.com/arslanbilal/git-cheat-sheet)
--   [this GitHub io page](https://rachelcarmena.github.io/2018/12/12/how-to-teach-git.html)
--   [command by command, explain](https://recompilermag.com/issues/issue-1/how-to-teach-git/)
--   [Jadi's videos](https://faradars.org/courses/fvgit9609-git-github-gitlab)
--   [step by step](https://dont-be-afraid-to-commit.readthedocs.io/en/latest/git/commandlinegit.html)
--   [this good slide](https://courses.cs.washington.edu/courses/cse403/13au/lectures/git.ppt.pdf)
--   [cheatsheet](https://www.pauline-vos.nl/git-legit-cheatsheet/)
 
 ------------------
 
