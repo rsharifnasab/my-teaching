@@ -439,15 +439,15 @@ Change latest commit
 
 # further read
 
--   [Interactive learning](https://learngitbranching.js.org/)
--   [Amir's awesome slides](https://github.com/amirhallaji/My-Learning/tree/master/git)
--   [perfect cheat sheet](https://github.com/arslanbilal/git-cheat-sheet)
--   [this GitHub io page](https://rachelcarmena.github.io/2018/12/12/how-to-teach-git.html)
--   [command by command, explain](https://recompilermag.com/issues/issue-1/how-to-teach-git/)
--   [Jadi's videos](https://faradars.org/courses/fvgit9609-git-github-gitlab)
--   [step by step](https://dont-be-afraid-to-commit.readthedocs.io/en/latest/git/commandlinegit.html)
--   [this good slide](https://courses.cs.washington.edu/courses/cse403/13au/lectures/git.ppt.pdf)
--   [cheatsheet](https://www.pauline-vos.nl/git-legit-cheatsheet/)
+- [Interactive learning](https://learngitbranching.js.org/)
+- [Amir's awesome slides](https://github.com/amirhallaji/My-Learning/tree/master/git)
+- [perfect cheat sheet](https://github.com/arslanbilal/git-cheat-sheet)
+- [this GitHub io page](https://rachelcarmena.github.io/2018/12/12/how-to-teach-git.html)
+- [command by command, explain](https://recompilermag.com/issues/issue-1/how-to-teach-git/)
+- [Jadi's videos](https://faradars.org/courses/fvgit9609-git-github-gitlab)
+- [Roadmap](https://devopscube.com/git-for-devops/)
+- [this good slide](https://courses.cs.washington.edu/courses/cse403/13au/lectures/git.ppt.pdf)
+- [cheatsheet](https://www.pauline-vos.nl/git-legit-cheatsheet/)
 
 ------------------
 
