@@ -99,6 +99,7 @@ https://fossbytes.com/rolling-release-vs-fixed-release-distros-which-linux-distr
 + Init system (System D, Runit, OpenRC)
 + Daemons (background services)
 + Graphical server (X Server)
++ Display manager
 + Desktop environment (GNOME, Cinnamon, Mate, XFCE, KDE)
 + Applications
 
@@ -116,11 +117,11 @@ https://superuser.com/questions/96628/why-are-things-like-gnome-terminal-called-
 
 
 # basic commands
-+ pwd
-+ cd
-+ ls
-+ cat
-+ grep
++ pwd, cd, ls
++ cp, mv
++ cat, head, tail, tailf
++ `|`, grep
++ `>`, `>>`, `<`
 
 https://dev.to/awwsmm/101-bash-commands-and-tips-for-beginners-to-experts-30je
 
@@ -172,7 +173,7 @@ https://www.linuxfordevices.com/tutorials/linux/sudo-command-in-linux-unix
 
 -----------
 
-# get help
+# Get help
 + man
 + online man
 https://www.man7.org/linux/man-pages/man1/uptime.1.html
@@ -183,8 +184,9 @@ https://www.man7.org/linux/man-pages/man1/uptime.1.html
 
 # Bash scripting
 
-syntax
-https://learnxinyminutes.com/docs/bash/
++ hashbang
+
++ syntax: https://learnxinyminutes.com/docs/bash/
 
 ---------
 
@@ -193,8 +195,10 @@ https://unix.stackexchange.com/questions/173/how-to-compile-and-install-programs
 
 -----------
 
-# for docker: glibc, alpine,
-# bash scripting
+# for docker
++ libc: glibc, musl
++ utils: gnucoreutils, busybox
++ distro: ubuntu, alpine, scratch?
 
 ------------------
 
