@@ -21,19 +21,19 @@ rsharifnasab@gmail.com
 
 # Problems
 
--   save-as whole project 
--   collaboration
--   last stable version
--   space inefficiency
--   tracking changes
+-   Save-as whole project
+-   Collaboration
+-   Last stable version
+-   Space inefficiency
+-   Tracking changes
 
 ------------------
 
 # Benefits of version control
 
--   easily manage collaboration on a project
--   ability to have an unlimited number of developers
--   revert changes if something goes wrong
+-   Manage collaboration on a project
+-   Have an unlimited number of developers
+-   Revert changes if something went wrong
 
 ------------------
 
@@ -63,10 +63,10 @@ rsharifnasab@gmail.com
 
 # Git features
 
--   free and open source
--   distributed
--   non-linear (branches)
--   handle large projects efficiently
+-   Free and open source
+-   Distributed
+-   Non-linear history (branches)
+-   Handle large projects efficiently
 
 ![bg contain right 125%](./images/Linus-Torvalds.jpg)
 
@@ -82,11 +82,11 @@ rsharifnasab@gmail.com
 
 ------------------
 
-# how to use git
+# How to use git
 
 1. Search!
 2. I Search, too
-3. everybody else does Search too.
+3. Everybody else Search, too.
 
 ------------------
 
@@ -96,11 +96,11 @@ rsharifnasab@gmail.com
 
 # Hands-on
 
-+ initialize git
-+ write some code
-+ add, commit
-+ status
-+ checkout to another commit
++ Initialize git
++ Write some code
++ Add, Commit
++ Status
++ Check-out another commit
 
 ------------------
 
@@ -120,7 +120,7 @@ rsharifnasab@gmail.com
 + I just wrote a line of code; should I commit? ([atomic commits](https://dev.to/paulinevos/atomic-commits-will-help-you-git-legit-35i7))
 + Should I commit on a timely basis?
 + What to write in the commit message?  ([fun](https://whatthecommit.com/)) ([conventional](https://gist.github.com/qoomon/5dfcdf8eec66a051ecd85625518cfd13))
-+ aliases
++ Aliases
 
 -----------------
 
@@ -131,9 +131,9 @@ rsharifnasab@gmail.com
 
 # Branch
 
-+ working on a feature
-+ separate different programmers' work
-+ do not mess up the main/master branch
++ Working on a feature
++ Split different programmers' work
++ Do not mess up the main/master branch
 
 ![bg h:309 right](./images/git-branches-merge.png)
 
@@ -150,9 +150,9 @@ rsharifnasab@gmail.com
 # Merge conflict
 
 -   What if we can't merge?
--   some developers changed the same file
--   somebody should merge 2 versions 
--   with the help of a merge-tool
+-   Two developers changed the same file
+-   Somebody should merge 2 versions
+-   Merge-tool
 
 ![bg  right 100%](https://lh6.googleusercontent.com/proxy/EXZtnMuZcVrMmQ1YJ1vdyoadiEy-FQtUocRc5mWiOqUgcxp5SlJ-T-Bs8dFERfxym7E7U6SebY1PJRx9OYPJ5gtFrDPMMFF-)
 
@@ -160,9 +160,9 @@ rsharifnasab@gmail.com
 
 # Git HEAD
 
-+ a pointer to a commit 
-+ the current state of working dir
-+ where are the other commits?
++ Pointer to a commit
++ Current state of the working dir
++ Where are the other commits?
 
 ![bg fit right](https://static.javatpoint.com/tutorial/git/images/git-head.png)
 
@@ -170,30 +170,55 @@ rsharifnasab@gmail.com
 
 # Checkout
 
-- switch to another branch (prefer `switch`)
+- Switch to another branch (prefer `switch`)
 
-- reset a file to a specific commit version
+- Reset a file to a specific commit version
 
 ![bg fit right](https://static.javatpoint.com/tutorial/git/images/git-checkout.png)
 
 ------------------
 
 # Branching best pratcies
-- git flow
-  - stable master branch
-  - development branch
-  - feature branch
-  - release
-  - hot-fix branch
+
+- Topic branches
+  - Use topic branches (features & bug fixes)
+  - Avoid merging to master directly (PR & code review)
+  - Keep master branch up-to-date and high quality
+
 
 ------------------
 
 # Branching best pratcies
-- Trunk-based
+
+- Release branches
+  - Stabilize a release of code
+  - Long-lived
+  - Lock after end of support
+  - Do not merge to master
+  - Port updates from master
+
+- Read more [here](https://learn.microsoft.com/en-us/azure/devops/repos/git/git-branching-guidance?view=azure-devops)
+
+------------------
+
+# Branching best pratcies
+
+- **Git flow**
+  - Stable master branch
+  - Feature branch
+  - Hot-fix branch
+  - Release branch
+  - Development branch
+
+------------------
+
+# Branching best pratcies
+- **Trunk-based**
   - DevOps friendly
   - merge small, frequent updates
   - core trunk = main branch
-    checkout [this link](https://www.atlassian.com/continuous-delivery/continuous-integration/trunk-based-development)
+
+Read more [here](https://www.atlassian.com/continuous-delivery/continuous-integration/trunk-based-development)
 
 
 ![bg fit right](./images/trunk-vs-flow.jpg)
@@ -201,14 +226,13 @@ rsharifnasab@gmail.com
 
 ------------------
 
-
 # Hands-on
 
-+ create another branch
-+ checkout to another branch
-+ add commits to different branches
-+ merge changes
-+ solve a merge conflict
++ Create another branch
++ Checkout to another branch
++ Add commits to different branches
++ Merge changes
++ Solve a merge conflict
 
 ------------------
 
@@ -245,13 +269,13 @@ rsharifnasab@gmail.com
 
 ------------------
 
-# fork
+# Fork
 
 ![fork](images/fork.png)
 
 ------------------
 
-# PR
+# Pull Request (PR)
 
 ![bg contain ](images/PR.png)
 
@@ -306,10 +330,10 @@ Good site: [gitignore.io](https://www.gitignore.io/)
 
 - Commits don't have a name
 - How to specify commits
-- which commit was the last stable version?
+- Which commit was the last stable version?
 - How to handle versions?
 
-- read more [here](https://www.atlassian.com/git/tutorials/inspecting-a-repository/git-tag)
+- Read more [here](https://www.atlassian.com/git/tutorials/inspecting-a-repository/git-tag)
 
 ![bg fit right](./images/tag.webp)
 
@@ -417,7 +441,7 @@ Change latest commit
 
 ------------------
 
-# conclusion
+# Conclusion
 
 - Search & use help & read documentation
 - Don't panic
@@ -425,7 +449,7 @@ Change latest commit
 - Don't commit large files
 - Don't re-write public history
 - Pull before push, even better, pull before starting coding
-- Alias for your useful command
+- Aliasing for your useful command
 
 ------------------
 
@@ -537,3 +561,8 @@ rm -rf .git # get rid of git!
 
 
 made with [Marp](https://marp.app/)
+
++ run with:
+```bash
+marp README.md --allow-local-files -w
+```
