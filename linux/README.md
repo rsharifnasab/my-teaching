@@ -28,7 +28,7 @@ rsharifnasab@gmail.com
 
 # why Linux? (Philosophy)
 + Free software vs Proprietary software?
-+ why GNU/Linux?
++ Why GNU/Linux?
 
 https://en.wikipedia.org/wiki/GNU/Linux_naming_controversy
 
@@ -151,8 +151,9 @@ https://www.linuxfordevices.com/tutorials/linux/linux-filesystem-heirarchy
 -----------
 
 # Root?
-+ a user. Why it is bad?
-+ root of file system
++ Just a user. Why it is bad?
++ Root of file system
+
 ---------------
 
 # package managing
@@ -190,12 +191,12 @@ https://www.man7.org/linux/man-pages/man1/uptime.1.html
 
 ---------
 
-# compile from source
+# Compiling from source
 https://unix.stackexchange.com/questions/173/how-to-compile-and-install-programs-from-source
 
 -----------
 
-# for docker
+# What about Docker
 + libc: glibc, musl
 + utils: gnucoreutils, busybox
 + distro: ubuntu, alpine, scratch?
