@@ -84,9 +84,7 @@ rsharifnasab@gmail.com
 
 # How to use git
 
-1. Search!
-2. I Search, too
-3. Everybody else Search, too.
+![bg center 30%](./images/search-icon.png)
 
 ------------------
 
