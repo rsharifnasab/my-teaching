@@ -23,10 +23,22 @@ rsharifnasab@gmail.com
 ![bg right vertical 75%](./images/linus.jpg)
 
 
+------------
+
+# Linux Birthday
+
+> … I’m doing a (free) operating system (just a hobby, won’t be big and professional like gnu) for 386(486) AT clones. …
+
+Linus (torvalds@kruuna.helsinki.fi) - August 25, 1991
+
+
+https://linuxiac.com/linux-birthday/
+
+
 ------------------
 
 
-# why Linux? (Philosophy)
+# Why Linux? (Philosophy)
 + Free software vs Proprietary software?
 + Why GNU/Linux?
 
@@ -69,7 +81,7 @@ https://truelist.co/blog/linux-statistics/
 
 -------------
 
-# Other Unix-like OS
+# Other Unix-like OSs
 + Android: Based on Linux kernel (by now)
 + BSD: allows commercialization
 + macOS: Darwin Kernel
@@ -92,7 +104,6 @@ https://fossbytes.com/rolling-release-vs-fixed-release-distros-which-linux-distr
 --------------
 
 # Distro parts
-
 
 + Bootloader (GRUB)
 + Kernel
