@@ -41,7 +41,7 @@ rsharifnasab@gmail.com
 # Testing method
 
 + Traditional:
-    + job creation!
+    + Entrepreneur!
     + Print output
     + Check manually
 
@@ -60,7 +60,7 @@ rsharifnasab@gmail.com
 
 # What about tester?
 
-+ Tester should test our code?
++ Should Tester test our code?
 ![bg fill right 100%](./images/meme1.png)
 
 
@@ -103,7 +103,6 @@ rsharifnasab@gmail.com
 + System test
 + Acceptance test
 + Fuzz test
-+ Regression test
 + Load test (Non-functional)
 
 
@@ -152,8 +151,8 @@ rsharifnasab@gmail.com
 
 + Canary test
 + A/B test
-+ Staging
-
++ Staging Environment
+![](https://assets-global.website-files.com/5eb9845c0972c01cdaec8415/61b81bd9bb8a5a66946afa74_canary-tests-diagram.gif)
 
 ---------------
 
