@@ -86,20 +86,18 @@ https://truelist.co/blog/linux-statistics/
 + BSD: allows commercialization
 + macOS: Darwin Kernel
 + PS4 kernel based on FreeBSD
-+ Minix
-
-
++ Minix ([intel ME](https://itsfoss.com/fact-intel-minix-case/))
 
 --------------
 
 # Distro
-https://en.wikipedia.org/wiki/Linux_distribution
 
-+ how to choose?
-https://distrowatch.com/index.php
++ [About disto](https://en.wikipedia.org/wiki/Linux_distribution)
++ [Distro timeline](https://upload.wikimedia.org/wikipedia/commons/1/1b/Linux_Distribution_Timeline.svg)
 
-+ rolling vs fixed
-https://fossbytes.com/rolling-release-vs-fixed-release-distros-which-linux-distributions-are-better/
++ How to choose? [Distrowatch](https://distrowatch.com/index.php)
+
++ [Rolling vs fixed release?](https://averagelinuxuser.com/rolling-vs-fixed-linux-release/)
 
 --------------
 
@@ -119,9 +117,8 @@ https://fossbytes.com/rolling-release-vs-fixed-release-distros-which-linux-distr
 # Terminal
 + Text-based
 + not interesting
-+ and Shell?
-https://fossbytes.com/difference-between-shell-console-terminal/
-+ terminal emulator?
++ Terminal vs Shell?
++ Terminal emulator?
 https://superuser.com/questions/96628/why-are-things-like-gnome-terminal-called-terminal-emulators-instead-of-just
 
 -----------
@@ -144,20 +141,18 @@ https://www.educative.io/blog/bash-shell-command-cheat-sheet
 # SSH
 + why?
 + why not graphical?
-+ users?
 
 ----------
 
 # Edit files on terminal
-+ vim
-+ nano
++ Vim
++ Nano
 
 ---------
 
 # File-system heirarchy
 
-https://www.linuxfordevices.com/tutorials/linux/linux-filesystem-heirarchy
-
+https://linuxhandbook.com/linux-directory-structure/
 
 -----------
 
@@ -165,32 +160,33 @@ https://www.linuxfordevices.com/tutorials/linux/linux-filesystem-heirarchy
 + Just a user. Why it is bad?
 + Root of file system
 
----------------
 
-# package managing
-
-+ Install/Upgrade/Remove
-+ Apt/Pacman/Yum
-+ Software Repository
-
-https://blog.packagecloud.io/apt-cheat-sheet/
-
--------------
+-----------
 
 # Sudo
 + a prefix for some commands? No
 + Sudoer accounts?
 https://www.linuxfordevices.com/tutorials/linux/sudo-command-in-linux-unix
 
+---------------
 
------------
+# Package managing
+
++ Install/Upgrade/Remove
++ Apt/Pacman/Yum
++ Software Repository
+
+### Good cheatsheet [here](https://blog.packagecloud.io/apt-cheat-sheet/)
+
+-------------
+
 
 # Get help
 + man
 + online man
 https://www.man7.org/linux/man-pages/man1/uptime.1.html
 
-+ TLDR
++ [TLDR](https://tldr.sh/)
 
 ----------
 
@@ -202,8 +198,10 @@ https://www.man7.org/linux/man-pages/man1/uptime.1.html
 
 ---------
 
-# Compiling from source
-https://unix.stackexchange.com/questions/173/how-to-compile-and-install-programs-from-source
+# What if it isn't in software repo? 
++ Compiling from source [for example](https://github.com/rofl0r/ncdu)
++ Download from ppa [for example](https://persepolisdm.github.io/)
++ Install `.deb`
 
 -----------
 
@@ -211,6 +209,23 @@ https://unix.stackexchange.com/questions/173/how-to-compile-and-install-programs
 + libc: glibc, musl
 + utils: gnucoreutils, busybox
 + distro: ubuntu, alpine, scratch?
+
+
+------- 
+
+# APPENDIX-1: unix (philosophy)
++ [develop with unix philo in mind](https://monkey.org/~marius/unix-tools-hints.html)
++ [How C was born?](https://www.redhat.com/en/command-line-heroes/season-3/the-c-change?sc_id=701f20000012rt4AAA)
++ [Ritchie talk about Unix & C](https://www.youtube.com/watch?v=yY6YY81P3lE)
++ [Why Unix philosophy](https://www.youtube.com/watch?v=XvDZLjaCJuw)
+
+--------
+
+# APPENDIX-2: Torvalds-Tanenbaum debate
++ https://stackoverflow.com/questions/46410886/modular-kernel-vs-micro-kernel-monolitic-kernel
++ https://unix.stackexchange.com/questions/6409/how-does-linux-kernel-compare-to-microkernel-architectures
++ https://matt-rickard.com/16-lessons-from-the-tanenbaum-torvalds-debates
++ https://www.oreilly.com/openbook/opensources/book/appa.html
 
 ------------------
 
