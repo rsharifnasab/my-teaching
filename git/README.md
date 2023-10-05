@@ -39,7 +39,7 @@ rsharifnasab@gmail.com
 
 # SVN (by Apache)
 
-![bg auto](https://www.paulocollares.com.br/wp-content/uploads/2019/04/213-2134650_svn-logo-png-apache-subversion-logo.jpg)
+![bg auto](./images/svn.jpg)
 
 ------------------
 
@@ -99,6 +99,8 @@ rsharifnasab@gmail.com
 + Add, Commit
 + Status
 + Check-out another commit
+
+![bg contain right](./images/git-init-meme.jpg)
 
 ------------------
 
@@ -176,13 +178,23 @@ rsharifnasab@gmail.com
 
 ------------------
 
+# Hands-on
+
++ Create another branch
++ Checkout to another branch
++ Add commits to different branches
++ Merge changes
++ Solve a merge conflict
+
+------------------
+
 # Branching best pratcies
 
 - Topic branches
-  - Use topic branches (features & bug fixes)
   - Avoid merging to master directly (PR & code review)
   - Keep master branch up-to-date and high quality
 
+![vertical bg right 105%](./images/topic.png)
 
 ------------------
 
@@ -197,6 +209,8 @@ rsharifnasab@gmail.com
 
 - Read more [here](https://learn.microsoft.com/en-us/azure/devops/repos/git/git-branching-guidance?view=azure-devops)
 
+![bg contain right](./images/release-flow.png)
+
 ------------------
 
 # Branching best pratcies
@@ -207,6 +221,7 @@ rsharifnasab@gmail.com
   - Hot-fix branch
   - Release branch
   - Development branch
+![bg fit right](./images/develop.png)
 
 ------------------
 
@@ -224,34 +239,25 @@ Read more [here](https://www.atlassian.com/continuous-delivery/continuous-integr
 
 ------------------
 
-# Hands-on
-
-+ Create another branch
-+ Checkout to another branch
-+ Add commits to different branches
-+ Merge changes
-+ Solve a merge conflict
-
-------------------
-
 # GitHub
 
 - Instagram for git
 
-- a place to keep git projects, review them, fork them, and star them.
+- A place to keep git projects, review them, fork them, and star them.
 
-- alternatives: Gitlab, Bitbucket, and more
+- Alternatives: Gitlab, Bitbucket, and more
 
 ![bg fit right](https://devmountain.com/wp-content/uploads/2022/01/Gitvs_Github-1a-1.jpg)
 
 ------------------
 
 # Gist
-+  some parts of code to share with others
-+  not the whole program, just code snippets
-+  it is not common
-+  nor big projects, nor small ones do not have gists.
-+  for example [a cheat sheet](https://gist.github.com/mayazdi/9c3fc4f6e9828a803be757d177cea8e1)
++  A code snippet
++  It is not common
++  Nor big projects, nor small ones
++  like [a cheat sheet](https://gist.github.com/mayazdi/9c3fc4f6e9828a803be757d177cea8e1)
+
+![bg contain right](./images/gist.webp)
 
 ------------------
 
@@ -259,8 +265,8 @@ Read more [here](https://www.atlassian.com/continuous-delivery/continuous-integr
 
 -   remote: where should I upload my git projects
 -   push: the act of uploading the git project
--   clone: download the whole git project
 -   pull: check for updates in the remote git
+-   clone: download the whole git project
 
 ![bg contain horizontal right](images/push-meme.png)
 
@@ -296,18 +302,22 @@ Read more [here](https://www.atlassian.com/continuous-delivery/continuous-integr
 
 ------------------
 
-# .gitignore, .git
+# .gitignore
 
-- .git: local folder that contains git internal files (don't open it!)
+- .git: git internal files 
+    - don't modify it!
 
-- .gitignore: which files shoule be ignored by git?
+- .gitignore: which files should be ignored by git?
 ```
 *.class
-.idea/
+node_modules/
 __pycache__/
 ```
 
-Good site: [gitignore.io](https://www.gitignore.io/)
+[gitignore.io](https://www.gitignore.io/)
+
+![bg contain right](./images/ignore.jpg)
+
 
 -------------------
 
@@ -318,8 +328,8 @@ Good site: [gitignore.io](https://www.gitignore.io/)
 + Assets?
 + Passwords?
 
-![bg fit contain right vertical](https://i.redd.it/tfugj4n3l6ez.png)
-![bg fit contain right vertical](https://preview.redd.it/w4z3syuu3rv71.jpg?auto=webp&s=86ef09642888095b740b01ab0570487307449fff)
+![bg fit contain right vertical](./images/onde_modules.png)
+![bg fit contain right vertical](./images/ignore2.webp)
 
 ------------------
 
@@ -351,7 +361,7 @@ Good site: [gitignore.io](https://www.gitignore.io/)
 # History
 + Once again, why are we controlling version?
 + What was my last version?
-+ Who/When did this chage?
++ Who/When did this change?
 
 ![bg fit right contain](https://res.cloudinary.com/practicaldev/image/fetch/s---vCBqatm--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://thepracticaldev.s3.amazonaws.com/i/48schr7iqawvz6skkkbb.png)
 
@@ -391,6 +401,10 @@ Change latest commit
 
 #rewrite_history
 
+-----------------
+
+![bg contain](./images/rebase.jpg)
+
 ------------------
 
 # Interactive Rebase
@@ -400,6 +414,8 @@ Change latest commit
     - not a git command
     - a term in using rebase
     - group specific changes to one commit
+
+![bg contain right](./images/rebase-i.jpg)
 
 ------------------
 
@@ -412,6 +428,15 @@ Change latest commit
 ![bg contain fit right](https://www.mememaker.net/static/images/memes/3914636.jpg)
 
 -----------------
+
+# Force with lease push
++ Force push but safer
++ Check if is OK or not
++ In new git version
+
+![bg contain right](./images/force-meme.jpeg)
+
+---
 
 # Stash
 
@@ -448,6 +473,10 @@ Change latest commit
 - Don't re-write public history
 - Pull before push, even better, pull before starting coding
 - Aliasing for your useful command
+
+--------------
+
+![bg contain](./images/torvalds-ignore.webp)
 
 ------------------
 
