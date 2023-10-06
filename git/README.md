@@ -80,6 +80,12 @@ rsharifnasab@gmail.com
 
 ![bg contain](https://homes.cs.washington.edu/~mernst/advice/version-control-fig3.png)
 
+
+
+---------
+
+![bg auto](./images/local.jpg)
+
 ------------------
 
 # How to use git
@@ -89,6 +95,11 @@ rsharifnasab@gmail.com
 ------------------
 
 ![bg auto](https://slideplayer.com/slide/13332433/80/images/17/Git+file+lifecycle.jpg)
+
+
+------
+
+![bg contain](./images/add.jpg)
 
 ------------------
 
