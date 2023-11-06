@@ -1,2 +1,2 @@
 # My teaching
-I collect my presentation slides here. Feel free to copy or criticize them.
+I collect my presentation slides and contents here. Feel free to copy or modify them.
