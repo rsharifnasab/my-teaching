@@ -11,13 +11,13 @@ paginate: true
 **By Roozbeh Sharifnasab**
 rsharifnasab@gmail.com
 
-------------------
+---
 
 # Manual version control
 
 ![bg right 100%](images/trad.png)
 
-------------------
+---
 
 # Problems
 
@@ -27,7 +27,7 @@ rsharifnasab@gmail.com
 -   Space inefficiency
 -   Tracking changes
 
-------------------
+---
 
 # Benefits of version control
 
@@ -35,7 +35,7 @@ rsharifnasab@gmail.com
 -   Unlimited number of developers
 -   Revert changes if something went wrong
 
-------------------
+---
 
 # SVN (by Apache)
 
