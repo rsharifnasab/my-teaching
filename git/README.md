@@ -4,7 +4,7 @@ paginate: true
 ---
 
 # Git!
- 
+
 > Git (/git/)[7] is a distributed version-control system for tracking changes in source code during software development.
 
 
@@ -32,7 +32,7 @@ rsharifnasab@gmail.com
 # Benefits of version control
 
 -   Manage collaboration on a project
--   Have an unlimited number of developers
+-   Unlimited number of developers
 -   Revert changes if something went wrong
 
 ------------------
@@ -73,12 +73,12 @@ rsharifnasab@gmail.com
 ------------------
 
 
-![bg contain](https://homes.cs.washington.edu/~mernst/advice/version-control-fig2.png)
+![bg contain](./images/version-control-fig2.png)
 
 ------------------
 
 
-![bg contain](https://homes.cs.washington.edu/~mernst/advice/version-control-fig3.png)
+![bg contain](./images/version-control-fig3.png)
 
 
 
@@ -88,7 +88,7 @@ rsharifnasab@gmail.com
 
 ------------------
 
-# How to use git
+# How to use Git
 
 ![bg center 30%](./images/search-icon.png)
 
@@ -105,11 +105,11 @@ rsharifnasab@gmail.com
 
 # Hands-on
 
-+ Initialize git
-+ Write some code
-+ Add, Commit
++ Initialize Git
++ Write code
++ Add to staging, Commit
 + Status
-+ Check-out another commit
++ Git log/checkout
 
 ![bg contain right](./images/git-init-meme.jpg)
 
@@ -130,8 +130,7 @@ rsharifnasab@gmail.com
 
 + I just wrote a line of code; should I commit? ([atomic commits](https://dev.to/paulinevos/atomic-commits-will-help-you-git-legit-35i7))
 + Should I commit on a timely basis?
-+ What to write in the commit message?  ([fun](https://whatthecommit.com/)) ([conventional](https://gist.github.com/qoomon/5dfcdf8eec66a051ecd85625518cfd13))
-+ Aliases
++ What to write in the commit message?  ([conventional commit message](https://gist.github.com/qoomon/5dfcdf8eec66a051ecd85625518cfd13))
 
 -----------------
 
@@ -154,7 +153,7 @@ rsharifnasab@gmail.com
 
 ------------------
 
-![bg fit](https://res.cloudinary.com/practicaldev/image/fetch/s--MEKaM3dY--/c_imagga_scale,f_auto,fl_progressive,h_900,q_auto,w_1600/https://cl.ly/430Q2w473e2R/Image%25202018-04-30%2520at%25201.07.58%2520PM.png)
+![bg fit](./images/merge-commit.jpg)
 
 ------------------
 
@@ -165,7 +164,7 @@ rsharifnasab@gmail.com
 -   Somebody should merge 2 versions
 -   Merge-tool
 
-![bg  right 100%](https://lh6.googleusercontent.com/proxy/EXZtnMuZcVrMmQ1YJ1vdyoadiEy-FQtUocRc5mWiOqUgcxp5SlJ-T-Bs8dFERfxym7E7U6SebY1PJRx9OYPJ5gtFrDPMMFF-)
+![bg  right 100%](./images/conflict-2.png)
 
 ------------------
 
@@ -315,7 +314,7 @@ Read more [here](https://www.atlassian.com/continuous-delivery/continuous-integr
 
 # .gitignore
 
-- .git: git internal files 
+- .git: git internal files
     - don't modify it!
 
 - .gitignore: which files should be ignored by git?
