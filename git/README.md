@@ -41,13 +41,13 @@ rsharifnasab@gmail.com
 
 ![bg auto](./images/svn.jpg)
 
-------------------
+---
 
-# Visual Studio Team Services code (by Microsoft)
+# Mercurial
 
-![bg 30% down](https://logodix.com/logo/719944.png)
+![bg auto](./images/Mercurial.svg)
 
-------------------
+---
 
 # Git (by Linus Torvalds)
 
