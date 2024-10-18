@@ -219,6 +219,16 @@ rsharifnasab@gmail.com
 
 ---
 
+![bg contain](./images/subnet2.jpg)
+
+---
+
+
+![bg contain](./images/router-switch.webp.webp)
+
+
+---
+
 ![bg contain](./images/routing-diagram.svg)
 
 ---
@@ -271,6 +281,10 @@ rsharifnasab@gmail.com
 
 ---
 
+![bg contain](./images/osi.gif)
+
+---
+
 # OSI model
 
 https://www.cloudflare.com/learning/ddos/glossary/open-systems-interconnection-model-osi/
@@ -285,10 +299,15 @@ https://www.javatpoint.com/computer-network-tcp-ip-model
 
 ![bg contain](./images/tcp-ip-osi.webp)
 
+
+
 ---
 
-![bg contain](./images/osi.gif)
+![bg contain 90%](./images/each-layer-protocols.jpg)
 
+---
+
+# Q/A
 
 ---
 
@@ -311,9 +330,6 @@ https://www.javatpoint.com/computer-network-tcp-ip-model
 
 ![bg contain](./images/tcp-udp-application.jpg)
 
----
-
-![bg contain](./images/router-switch.webp.webp)
 
 ---
 
@@ -347,6 +363,36 @@ https://www.javatpoint.com/computer-network-tcp-ip-model
 ---
 
 ![bg contain](./images/peer2peer2.png)
+
+
+---
+
+# Q/A
+
+---
+
+# Hands-on
+
++ Simple client server over socket
++ Connect with Telnet
++ Can I deploy it on server?
++ Why people do not use it in production?
++ Stateless or stateful?
+
+---
+
+```bash
+# 3 day forecast
+curl "wttr.in/tehran"
+
+# today status
+curl "wttr.in/tehran?0"
+
+# today status one liner
+curl "wttr.in/tehran?format=3"
+```
+
+https://github.com/chubin/wttr.in
 
 ---
 
