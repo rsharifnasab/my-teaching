@@ -381,6 +381,10 @@ https://www.javatpoint.com/computer-network-tcp-ip-model
 
 ---
 
+https://1995parham-teaching.github.io/ie-lecture/lectures/lecture-2/#/
+
+---
+
 ```bash
 # 3 day forecast
 curl "wttr.in/tehran"
