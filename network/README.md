@@ -385,6 +385,16 @@ https://1995parham-teaching.github.io/ie-lecture/lectures/lecture-2/#/
 
 ---
 
+# Good HTTP clients
+
++ cURL [a good book](https://everything.curl.dev/)
++ HTTPie
++ Postman
++ Insomnia
++ Bruno
+
+---
+
 ```bash
 # 3 day forecast
 curl "wttr.in/tehran"
