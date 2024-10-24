@@ -19,7 +19,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 
 	// Headers
 	headers := r.Header
-	contentType := headers.Get("content-type")
+	contentType := headers.Get("Content-Type")
 
 	// Query parameters
 	queryParams := r.URL.Query()

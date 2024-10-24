@@ -12,7 +12,7 @@ func main() {
 	http.HandleFunc("/my-path-1", func(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(400)
 		fmt.Fprintf(w, "Welcome to my path 1")
-		// supports only /my-path-2
+		// supports only /my-path-1
 	})
 	http.HandleFunc("/my-path-2/", func(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(401)

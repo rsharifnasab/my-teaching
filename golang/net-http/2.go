@@ -9,5 +9,5 @@ func main() {
 	http.ListenAndServe(":8080", nil)
 }
 
-// visit: http://localhost:8080/static/html/
+// visit: http://localhost:8080/static/html/index.html
 // https://gowebexamples.com/static-files/

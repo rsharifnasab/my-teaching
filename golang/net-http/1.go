@@ -7,7 +7,8 @@ import (
 
 func main() {
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprintf(w, "Welcome to my dynamic website!")
+		fmt.Fprintf(w, "Welcome to my dynamic website!\n")
+		w.Write([]byte("bye"))
 		// what is fprintf? what is w?
 		// what is status code? read docs
 		// what about content length?
