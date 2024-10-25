@@ -4,3 +4,5 @@
 + serialization/deserialization
 + custom marshaller
 + gjson and advanced query in json
++ go-playground validation
++ schema validation [here](https://1995parham-teaching.github.io/ie-lecture/lectures/lecture-6/#/10)
