@@ -5,6 +5,7 @@ import (
 
 	"github.com/gofiber/fiber/v2"
 	"gorm-postgres/database"
+	"gorm-postgres/models"
 	"gorm-postgres/routes"
 )
 
@@ -22,6 +23,8 @@ func setUpRoutes(app *fiber.App) {
 
 func main() {
 	database.ConnectDb()
+	models.Migrate()
+
 	app := fiber.New()
 
 	setUpRoutes(app)
@@ -30,5 +33,5 @@ func main() {
 		return c.SendStatus(404)
 	})
 
-	log.Fatal(app.Listen(":3000"))
+	log.Fatal(app.Listen(":8080"))
 }

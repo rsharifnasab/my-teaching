@@ -18,7 +18,7 @@ func AddBook(c *fiber.Ctx) error {
 		return c.Status(400).JSON(err.Error())
 	}
 
-	database.DB.Db.Create(&book)
+	database.DB().Db.Create(&book)
 
 	return c.Status(200).JSON(book)
 }
@@ -26,7 +26,7 @@ func AddBook(c *fiber.Ctx) error {
 // AllBooks
 func AllBooks(c *fiber.Ctx) error {
 	books := []models.Book{}
-	database.DB.Db.Find(&books)
+	database.DB().Db.Find(&books)
 
 	return c.Status(200).JSON(books)
 }
