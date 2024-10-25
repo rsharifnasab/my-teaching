@@ -26,7 +26,7 @@ func NewGormBook(db database.Dbinstance) Book {
 }
 
 func (b *gormBook) Add(newBook models.Book) (models.Book, error) {
-	result := b.DB.Db.Create(newBook)
+	result := b.DB.Db.Create(&newBook)
 	if result.Error != nil {
 		return models.Book{}, result.Error
 	}

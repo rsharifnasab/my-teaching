@@ -7,9 +7,7 @@ import (
 	"gorm-postgres/database"
 )
 
-func Migrate() {
-	db := database.DB().Db
-
+func Migrate(db database.Dbinstance) {
 	log.Println("running migrations")
-	db.AutoMigrate(&models.Book{})
+	db.Db.AutoMigrate(&models.Book{})
 }

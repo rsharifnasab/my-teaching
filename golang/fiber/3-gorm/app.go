@@ -10,31 +10,24 @@ import (
 	"gorm-postgres/routes"
 )
 
-func setUpRoutes(app *fiber.App) {
-	app.Get("/hello", routes.Hello)
-	app.Get("/allbooks", routes.AllBooks)
-
-	app.Post("/addbook", routes.AddBook)
-	app.Post("/book", routes.Book)
-
-	app.Put("/update", routes.Update)
-
-	app.Delete("/delete", routes.Delete)
-}
-
 func main() {
 	db := database.ConnectDb()
 	bookRepo := repository.NewGormBook(db)
-	_ = bookRepo
 
-	models.Migrate()
+	server := &routes.HTTPServer{
+		Repo: bookRepo,
+	}
+
+	models.Migrate(db)
 
 	app := fiber.New()
+	app.Get(`/:test<int>`, func(c *fiber.Ctx) error {
+		return c.SendString(c.Params("test"))
+	})
 
-	app.Get("/allbooks", routes.AllBooks)
-	app.Get("/allbooks2", routes.AllBooksCreator(bookRepo))
+	v1 := app.Group("/v1")
 
-	setUpRoutes(app)
+	server.Register(v1)
 
 	app.Use(func(c *fiber.Ctx) error {
 		return c.SendStatus(404)

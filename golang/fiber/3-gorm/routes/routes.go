@@ -5,18 +5,41 @@ import (
 	"net/http"
 
 	"github.com/gofiber/fiber/v2"
-	"gorm-postgres/database"
 	"gorm-postgres/models"
 	"gorm-postgres/repository"
 )
 
+type HTTPServer struct {
+	Repo repository.Book
+}
+
+func (server *HTTPServer) Register(app fiber.Router) {
+	app.Get("/hello", server.Hello)
+	app.Post("/addbook", server.AddBook)
+	app.Get("/allbooks", server.AllBooks)
+	app.Get("/books/:id/salam", server.GetBook)
+}
+
 // Hello
-func Hello(c *fiber.Ctx) error {
+func (server *HTTPServer) Hello(c *fiber.Ctx) error {
 	return c.SendString("fiber")
 }
 
+func (server *HTTPServer) GetBook(c *fiber.Ctx) error {
+	bookID := c.Params("id")
+	validIDs := []string{"42", "32", "22", "12"}
+	for _, id := range validIDs {
+		if id == bookID {
+			return c.SendString(bookID)
+		}
+	}
+
+	return c.SendStatus(404)
+}
+
 // AddBook
-func AddBook(c *fiber.Ctx) error {
+func (server *HTTPServer) AddBook(c *fiber.Ctx) error {
+	println(c.Query("key1", "default"))
 	book := &AddBookRequest{}
 	if err := c.BodyParser(book); err != nil {
 		return c.Status(400).JSON(err.Error())
@@ -24,71 +47,31 @@ func AddBook(c *fiber.Ctx) error {
 
 	fmt.Printf("added book: %+v\n", book)
 
-	newBook := &models.Book{
+	newBook := models.Book{
 		Title:  book.Title,
 		Author: book.Author,
 	}
 
-	database.DB().Db.Create(newBook) // TODO
+	createdBook, err := server.Repo.Add(newBook)
+	if err != nil {
+		return err
+	}
 
 	result := AddBookResponse{
 		Code:   http.StatusCreated,
 		Status: "success",
-		ID:     int(newBook.ID),
+		ID:     int(createdBook.ID),
 	}
 
 	return c.Status(http.StatusCreated).JSON(result)
 }
 
 // AllBooks
-func AllBooks(c *fiber.Ctx) error {
-	books := []models.Book{}
-	database.DB().Db.Find(&books) // TODO
+func (server *HTTPServer) AllBooks(c *fiber.Ctx) error {
+	books, err := server.Repo.GetAll()
+	if err != nil {
+		return err
+	}
 
 	return c.Status(200).JSON(books)
-}
-
-// higher order function
-func AllBooksCreator(repo repository.Book) func(c *fiber.Ctx) error {
-	return func(c *fiber.Ctx) error {
-		books, _ := repo.GetAll()
-
-		return c.Status(200).JSON(books)
-	}
-}
-
-// Book
-func Book(c *fiber.Ctx) error {
-	book := []models.Book{}
-	title := new(models.Book)
-	if err := c.BodyParser(title); err != nil {
-		return c.Status(400).JSON(err.Error())
-	}
-	database.DB().Db.Where("title = ?", title.Title).Find(&book) // TODO
-	return c.Status(200).JSON(book)
-}
-
-// Update
-func Update(c *fiber.Ctx) error {
-	book := []models.Book{}
-	title := new(models.Book)
-	if err := c.BodyParser(title); err != nil {
-		return c.Status(400).JSON(err.Error())
-	}
-
-	database.DB().Db.Model(&book).Where("title = ?", title.Title).Update("author", title.Author) // TODO
-
-	return c.Status(200).JSON("updated")
-}
-
-// Delete
-func Delete(c *fiber.Ctx) error {
-	book := []models.Book{}
-	title := new(models.Book)
-	if err := c.BodyParser(title); err != nil {
-		return c.Status(400).JSON(err.Error())
-	}
-	database.DB().Db.Where("title = ?", title.Title).Delete(&book) // TODO
-
-	return c.Status(200).JSON("deleted")
 }
