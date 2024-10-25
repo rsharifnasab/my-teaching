@@ -1,0 +1,14 @@
+{
+  "key1": "value1",
+  "arr1": [1, 2, 3],
+  "nested1": {
+    "key1": "value1",
+    "nested2": {
+      "nested3": {
+        "nested4": {
+          "name": "ali"
+        }
+      }
+    }
+  }
+}
