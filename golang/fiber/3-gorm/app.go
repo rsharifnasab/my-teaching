@@ -6,6 +6,7 @@ import (
 	"github.com/gofiber/fiber/v2"
 	"gorm-postgres/database"
 	"gorm-postgres/models"
+	"gorm-postgres/repository"
 	"gorm-postgres/routes"
 )
 
@@ -22,10 +23,16 @@ func setUpRoutes(app *fiber.App) {
 }
 
 func main() {
-	database.ConnectDb()
+	db := database.ConnectDb()
+	bookRepo := repository.NewGormBook(db)
+	_ = bookRepo
+
 	models.Migrate()
 
 	app := fiber.New()
+
+	app.Get("/allbooks", routes.AllBooks)
+	app.Get("/allbooks2", routes.AllBooksCreator(bookRepo))
 
 	setUpRoutes(app)
 

@@ -7,6 +7,7 @@ import (
 	"github.com/gofiber/fiber/v2"
 	"gorm-postgres/database"
 	"gorm-postgres/models"
+	"gorm-postgres/repository"
 )
 
 // Hello
@@ -45,6 +46,15 @@ func AllBooks(c *fiber.Ctx) error {
 	database.DB().Db.Find(&books) // TODO
 
 	return c.Status(200).JSON(books)
+}
+
+// higher order function
+func AllBooksCreator(repo repository.Book) func(c *fiber.Ctx) error {
+	return func(c *fiber.Ctx) error {
+		books, _ := repo.GetAll()
+
+		return c.Status(200).JSON(books)
+	}
 }
 
 // Book
