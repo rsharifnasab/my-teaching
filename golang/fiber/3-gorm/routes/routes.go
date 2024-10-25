@@ -16,7 +16,7 @@ func Hello(c *fiber.Ctx) error {
 
 // AddBook
 func AddBook(c *fiber.Ctx) error {
-	book := new(AddBookRequest)
+	book := &AddBookRequest{}
 	if err := c.BodyParser(book); err != nil {
 		return c.Status(400).JSON(err.Error())
 	}
@@ -28,7 +28,7 @@ func AddBook(c *fiber.Ctx) error {
 		Author: book.Author,
 	}
 
-	database.DB().Db.Create(newBook)
+	database.DB().Db.Create(newBook) // TODO
 
 	result := AddBookResponse{
 		Code:   http.StatusCreated,
@@ -42,7 +42,7 @@ func AddBook(c *fiber.Ctx) error {
 // AllBooks
 func AllBooks(c *fiber.Ctx) error {
 	books := []models.Book{}
-	database.DB().Db.Find(&books)
+	database.DB().Db.Find(&books) // TODO
 
 	return c.Status(200).JSON(books)
 }
@@ -54,7 +54,7 @@ func Book(c *fiber.Ctx) error {
 	if err := c.BodyParser(title); err != nil {
 		return c.Status(400).JSON(err.Error())
 	}
-	database.DB().Db.Where("title = ?", title.Title).Find(&book)
+	database.DB().Db.Where("title = ?", title.Title).Find(&book) // TODO
 	return c.Status(200).JSON(book)
 }
 
@@ -66,7 +66,7 @@ func Update(c *fiber.Ctx) error {
 		return c.Status(400).JSON(err.Error())
 	}
 
-	database.DB().Db.Model(&book).Where("title = ?", title.Title).Update("author", title.Author)
+	database.DB().Db.Model(&book).Where("title = ?", title.Title).Update("author", title.Author) // TODO
 
 	return c.Status(200).JSON("updated")
 }
@@ -78,7 +78,7 @@ func Delete(c *fiber.Ctx) error {
 	if err := c.BodyParser(title); err != nil {
 		return c.Status(400).JSON(err.Error())
 	}
-	database.DB().Db.Where("title = ?", title.Title).Delete(&book)
+	database.DB().Db.Where("title = ?", title.Title).Delete(&book) // TODO
 
 	return c.Status(200).JSON("deleted")
 }
