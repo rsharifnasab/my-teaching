@@ -9,8 +9,13 @@ import (
 func main() {
 	app := fiber.New()
 
-	app.Get("/", func(c *fiber.Ctx) error {
-		return c.SendString("Hello, World!")
+	app.Get("/search", func(c *fiber.Ctx) error {
+		query := c.Query("q", "default")
+		return c.SendString("Search query: " + query)
+	})
+	app.Post("/", func(c *fiber.Ctx) error {
+		println(string(c.Body()))
+		return c.SendString("Hello, I got your message!")
 	})
 
 	log.Fatal(app.Listen(":8080"))
