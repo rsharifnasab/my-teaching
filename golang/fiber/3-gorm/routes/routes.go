@@ -1,6 +1,9 @@
 package routes
 
 import (
+	"fmt"
+	"net/http"
+
 	"github.com/gofiber/fiber/v2"
 	"gorm-postgres/database"
 	"gorm-postgres/models"
@@ -13,14 +16,27 @@ func Hello(c *fiber.Ctx) error {
 
 // AddBook
 func AddBook(c *fiber.Ctx) error {
-	book := new(models.Book)
+	book := new(AddBookRequest)
 	if err := c.BodyParser(book); err != nil {
 		return c.Status(400).JSON(err.Error())
 	}
 
-	database.DB().Db.Create(&book)
+	fmt.Printf("added book: %+v\n", book)
 
-	return c.Status(200).JSON(book)
+	newBook := &models.Book{
+		Title:  book.Title,
+		Author: book.Author,
+	}
+
+	database.DB().Db.Create(newBook)
+
+	result := AddBookResponse{
+		Code:   http.StatusCreated,
+		Status: "success",
+		ID:     int(newBook.ID),
+	}
+
+	return c.Status(http.StatusCreated).JSON(result)
 }
 
 // AllBooks
@@ -38,7 +54,7 @@ func Book(c *fiber.Ctx) error {
 	if err := c.BodyParser(title); err != nil {
 		return c.Status(400).JSON(err.Error())
 	}
-	database.DB.Db.Where("title = ?", title.Title).Find(&book)
+	database.DB().Db.Where("title = ?", title.Title).Find(&book)
 	return c.Status(200).JSON(book)
 }
 
@@ -50,7 +66,7 @@ func Update(c *fiber.Ctx) error {
 		return c.Status(400).JSON(err.Error())
 	}
 
-	database.DB.Db.Model(&book).Where("title = ?", title.Title).Update("author", title.Author)
+	database.DB().Db.Model(&book).Where("title = ?", title.Title).Update("author", title.Author)
 
 	return c.Status(200).JSON("updated")
 }
@@ -62,7 +78,7 @@ func Delete(c *fiber.Ctx) error {
 	if err := c.BodyParser(title); err != nil {
 		return c.Status(400).JSON(err.Error())
 	}
-	database.DB.Db.Where("title = ?", title.Title).Delete(&book)
+	database.DB().Db.Where("title = ?", title.Title).Delete(&book)
 
 	return c.Status(200).JSON("deleted")
 }
