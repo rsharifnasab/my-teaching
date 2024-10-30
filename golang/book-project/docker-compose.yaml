@@ -1,0 +1,15 @@
+---
+services:
+  postgres:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: pgsql
+    ports: [5432:5432]
+    healthcheck:
+      # https://github.com/peter-evans/docker-compose-healthcheck/issues/16
+      test: [CMD-SHELL, 'pg_isready -U $${POSTGRES_USER}']
+      interval: 10s
+      timeout: 5s
+      retries: 5

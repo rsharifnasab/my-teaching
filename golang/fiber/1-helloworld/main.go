@@ -13,7 +13,7 @@ func main() {
 		query := c.Query("q", "default")
 		return c.SendString("Search query: " + query)
 	})
-	app.Post("/", func(c *fiber.Ctx) error {
+	app.Get("/", func(c *fiber.Ctx) error {
 		println(string(c.Body()))
 		return c.SendString("Hello, I got your message!")
 	})
