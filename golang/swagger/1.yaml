@@ -1,0 +1,88 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Book CRUD API
+  description: A simple API to demonstrate book CRUD operations.
+
+paths:
+  /books:
+    get:
+      summary: Get a list of all books
+      description: Retrieve a list of books in the library.
+      responses:
+        '200':
+          description: A list of books.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    title:
+                      type: string
+                    author:
+                      type: string
+                    publishedYear:
+                      type: integer
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Unable to retrieve the list of books."
+    post:
+      summary: Add a new book to the collection
+      description: Create a new book entry in the library.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                author:
+                  type: string
+                publishedYear:
+                  type: integer
+              required:
+                - title
+                - author
+                - publishedYear
+      responses:
+        '201':
+          description: Book successfully created.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  title:
+                    type: string
+                  author:
+                    type: string
+                  publishedYear:
+                    type: integer
+                  message:
+                    type: string
+                    example: "Book created successfully."
+        '400':
+          description: Invalid request payload.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Invalid book data provided."

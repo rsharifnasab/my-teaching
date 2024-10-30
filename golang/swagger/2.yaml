@@ -1,0 +1,119 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Book CRUD API
+  description: A simple API to demonstrate book CRUD operations.
+
+paths:
+  /books:
+    get:
+      summary: Get a list of all books
+      description: Retrieve a list of books in the library.
+      responses:
+        '200':
+          description: A list of books.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BookListResponse'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+    post:
+      summary: Add a new book to the collection
+      description: Create a new book entry in the library.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BookRequest'
+      responses:
+        '201':
+          description: Book successfully created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BookResponse'
+        '400':
+          description: Invalid request payload.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+components:
+  schemas:
+    BookRequest:
+      type: object
+      properties:
+        title:
+          type: string
+        author:
+          type: string
+        publishedYear:
+          type: integer
+      required:
+        - title
+        - author
+        - publishedYear
+      example:
+        title: "The Great Gatsby"
+        author: "F. Scott Fitzgerald"
+        publishedYear: 1925
+
+    BookResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        author:
+          type: string
+        publishedYear:
+          type: integer
+        message:
+          type: string
+          example: "Book created successfully."
+      example:
+        id: 1
+        title: "The Great Gatsby"
+        author: "F. Scott Fitzgerald"
+        publishedYear: 1925
+        message: "Book created successfully."
+
+    BookListResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          title:
+            type: string
+          author:
+            type: string
+          publishedYear:
+            type: integer
+      example:
+        - id: 1
+          title: "The Great Gatsby"
+          author: "F. Scott Fitzgerald"
+          publishedYear: 1925
+        - id: 2
+          title: "To Kill a Mockingbird"
+          author: "Harper Lee"
+          publishedYear: 1960
+
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+      example:
+        error: "Invalid book data provided."
