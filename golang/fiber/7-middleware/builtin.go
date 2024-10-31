@@ -11,7 +11,7 @@ import (
 func main() {
 	app := fiber.New()
 
-	app.Use(logger.New())
+	app.Use(logger.New(logger.Config{}))
 
 	app.Use(recover.New())
 
