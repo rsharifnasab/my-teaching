@@ -15,9 +15,15 @@ func Logger(c *fiber.Ctx) error {
 func main() {
 	app := fiber.New()
 
-	app.Use(skip.New(Logger, func(ctx *fiber.Ctx) bool {
-		return ctx.Method() == fiber.MethodGet
-	}))
+	// app.Use(Logger)
+	app.Use(
+		skip.New(
+			Logger,
+			func(ctx *fiber.Ctx) bool { // predicate
+				return ctx.Method() == fiber.MethodGet
+			},
+		),
+	)
 
 	app.Get("/", func(c *fiber.Ctx) error {
 		return c.SendString("response get")
