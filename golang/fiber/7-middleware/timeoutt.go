@@ -6,6 +6,7 @@ import (
 	"time"
 
 	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/middleware/logger"
 	"github.com/gofiber/fiber/v2/middleware/timeout"
 )
 
@@ -32,12 +33,18 @@ func CustomTimeoutMiddleware(duration time.Duration) fiber.Handler {
 
 func main() {
 	app := fiber.New()
+	app.Use(logger.New())
 
 	// deprecated
-	app.Get("/slow1", timeout.New(func(c *fiber.Ctx) error {
-		time.Sleep(3 * time.Second)
-		return c.SendString("This should timeout!")
-	}, 2*time.Second))
+	app.Get("/slow1",
+		timeout.New(
+			func(c *fiber.Ctx) error {
+				time.Sleep(3 * time.Second)
+				return c.SendString("This should timeout!")
+			},
+			2*time.Second,
+		),
+	)
 
 	app.Use(CustomTimeoutMiddleware(2 * time.Second))
 	app.Get("/slow2", func(c *fiber.Ctx) error {

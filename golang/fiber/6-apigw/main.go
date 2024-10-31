@@ -11,7 +11,7 @@ func main() {
 	app := fiber.New()
 	app.Use(logger.New(logger.Config{}))
 
-	app.Get("/", func(c *fiber.Ctx) error {
+	app.Get("/v1", func(c *fiber.Ctx) error {
 		return c.SendString("Hello, I got your message!")
 	})
 
