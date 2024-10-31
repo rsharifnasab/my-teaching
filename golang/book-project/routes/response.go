@@ -1,7 +1,7 @@
 package routes
 
 type AddBookResponse struct {
-	Status string `json:"status"`
-	Code   int    `json:"code"`
+	Author string `json:"author"`
+	Title  string `json:"title"`
 	ID     int    `json:"id"`
 }

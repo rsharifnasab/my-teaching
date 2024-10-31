@@ -1,8 +1,10 @@
 package routes
 
 import (
+	"errors"
 	"fmt"
 	"net/http"
+	"strconv"
 
 	"github.com/gofiber/fiber/v2"
 	"gorm-postgres/models"
@@ -13,39 +15,95 @@ type HTTPServer struct {
 	Repo repository.Book
 }
 
+/*
+
+// Create a new fiber instance with custom config
+app := fiber.New(fiber.Config{
+    // Override default error handler
+    ErrorHandler: func(ctx *fiber.Ctx, err error) error {
+        // Status code defaults to 500
+        code := fiber.StatusInternalServerError
+
+        // Retrieve the custom status code if it's a *fiber.Error
+        var e *fiber.Error
+        if errors.As(err, &e) {
+            code = e.Code
+        }
+
+        // Send custom error page
+        err = ctx.Status(code).SendFile(fmt.Sprintf("./%d.html", code))
+        if err != nil {
+            // In case the SendFile fails
+            return ctx.Status(fiber.StatusInternalServerError).SendString("Internal Server Error")
+        }
+
+        // Return from handler
+        return nil
+    },
+})
+
+*/
+
+func (server *HTTPServer) ErrorHandler(c *fiber.Ctx, err error) error {
+	code := fiber.StatusInternalServerError
+
+	return c.Status(code).JSON(fiber.Map{
+		"status": "failed",
+		"code":   code,
+		"reason": err.Error(),
+	})
+}
+
 func (server *HTTPServer) Register(app fiber.Router) {
-	app.Get("/hello", server.Hello)
-	app.Post("/addbook", server.AddBook)
-	app.Get("/allbooks", server.AllBooks)
-	app.Get("/books/:id/salam", server.GetBook)
+	app.Get("/", server.Hello)
+	app.Post("/books", server.AddBook)
+	app.Get("/books", server.AllBooks)
+
+	app.Get("/books/error", server.ErrorCreator)
+	app.Get("/books/panic", server.Panicer)
+	app.Get("/books/:id", server.GetBookByID)
 }
 
-// Hello
 func (server *HTTPServer) Hello(c *fiber.Ctx) error {
-	return c.SendString("fiber")
+	return c.SendString("Hello from fiber")
 }
 
-func (server *HTTPServer) GetBook(c *fiber.Ctx) error {
+func (server *HTTPServer) Panicer(c *fiber.Ctx) error {
+	panic("sorry I panicked")
+}
+
+func (server *HTTPServer) ErrorCreator(c *fiber.Ctx) error {
+	return errors.New("cannot process")
+}
+
+// TODO
+func (server *HTTPServer) GetBookByID(c *fiber.Ctx) error {
 	bookID := c.Params("id")
-	validIDs := []string{"42", "32", "22", "12"}
-	for _, id := range validIDs {
-		if id == bookID {
-			return c.SendString(bookID)
-		}
+
+	bookIDInt, err := strconv.Atoi(bookID)
+	if err != nil {
+		return c.SendStatus(400)
 	}
 
-	return c.SendStatus(404)
+	bookEntity, err := server.Repo.Get(uint64(bookIDInt))
+	if err != nil {
+		return c.SendStatus(404)
+	}
+
+	bookResponse := AddBookResponse{
+		Title:  bookEntity.Title,
+		Author: bookEntity.Author,
+		ID:     int(bookEntity.ID),
+	}
+
+	return c.JSON(bookResponse)
 }
 
-// AddBook
 func (server *HTTPServer) AddBook(c *fiber.Ctx) error {
-	println(c.Query("key1", "default"))
 	book := &AddBookRequest{}
 	if err := c.BodyParser(book); err != nil {
 		return c.Status(400).JSON(err.Error())
 	}
-
-	fmt.Printf("added book: %+v\n", book)
 
 	newBook := models.Book{
 		Title:  book.Title,
@@ -54,20 +112,30 @@ func (server *HTTPServer) AddBook(c *fiber.Ctx) error {
 
 	createdBook, err := server.Repo.Add(newBook)
 	if err != nil {
-		return err
+		return err // problematic
 	}
 
 	result := AddBookResponse{
-		Code:   http.StatusCreated,
-		Status: "success",
+		Author: createdBook.Author,
+		Title:  createdBook.Title,
 		ID:     int(createdBook.ID),
 	}
+
+	location := fmt.Sprintf("%s:%d/v1/%v",
+		"localhost",
+		8080,
+		createdBook.ID,
+	)
+
+	c.Response().Header.Add("Location", location)
 
 	return c.Status(http.StatusCreated).JSON(result)
 }
 
-// AllBooks
+// TODO:: add pagniation
 func (server *HTTPServer) AllBooks(c *fiber.Ctx) error {
+	// sort,filter, page, page-size in query Param
+	// + good default
 	books, err := server.Repo.GetAll()
 	if err != nil {
 		return err

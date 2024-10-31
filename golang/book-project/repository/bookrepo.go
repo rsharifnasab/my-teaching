@@ -1,6 +1,8 @@
 package repository
 
 import (
+	"fmt"
+
 	"gorm-postgres/database"
 	"gorm-postgres/models"
 )
@@ -10,7 +12,7 @@ import (
 type Book interface {
 	Add(models.Book) (models.Book, error)
 	GetAll() ([]models.Book, error)
-	Get(title string) (models.Book, error)
+	Get(id uint64) (models.Book, error)
 	Delete(title string) error
 	Update(updated models.Book) (models.Book, error)
 }
@@ -44,8 +46,17 @@ func (b *gormBook) GetAll() ([]models.Book, error) {
 	return bookList, nil
 }
 
-func (b *gormBook) Get(title string) (models.Book, error) {
-	return models.Book{}, nil
+func (b *gormBook) Get(id uint64) (models.Book, error) {
+	var book models.Book
+
+	idString := fmt.Sprintf("%v", id)
+
+	tx := b.DB.Db.First(&book, idString)
+	if tx.Error != nil {
+		return models.Book{}, fmt.Errorf("cannot get book in bookRepo: %w", tx.Error)
+	}
+
+	return book, nil
 }
 
 func (b *gormBook) Delete(title string) error {

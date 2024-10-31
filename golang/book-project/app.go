@@ -4,6 +4,8 @@ import (
 	"log"
 
 	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/middleware/logger"
+	recovermw "github.com/gofiber/fiber/v2/middleware/recover"
 	"gorm-postgres/database"
 	"gorm-postgres/models"
 	"gorm-postgres/repository"
@@ -20,8 +22,13 @@ func main() {
 
 	models.Migrate(db)
 
-	app := fiber.New()
+	app := fiber.New(fiber.Config{
+		ErrorHandler: server.ErrorHandler,
+	})
+
 	v1 := app.Group("/v1")
+	v1.Use(logger.New())
+	v1.Use(recovermw.New())
 
 	server.Register(v1)
 
