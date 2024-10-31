@@ -1,6 +1,7 @@
 package main
 
 import (
+	"errors"
 	"log"
 	"time"
 
@@ -8,15 +9,21 @@ import (
 )
 
 func customMiddleware(c *fiber.Ctx) error {
-	log.Printf("Request: %s %s\n", c.Method(), c.Path())
-
 	start := time.Now()
-	defer func() {
-		duration := time.Since(start)
-		log.Printf("Processed in %v", duration)
-	}()
+
+	if start.Day() == 1 {
+		return errors.New("i cannot work on 1st of each month")
+	}
 
 	err := c.Next()
+
+	if false {
+		// overrides the "next" response
+		c.SendString("response in middleware")
+	}
+
+	duration := time.Since(start)
+	log.Printf("Processed in %v", duration)
 
 	return err
 }
@@ -24,15 +31,16 @@ func customMiddleware(c *fiber.Ctx) error {
 func main() {
 	app := fiber.New()
 
-	app.Use(customMiddleware)
-
 	app.Get("/", func(c *fiber.Ctx) error {
 		time.Sleep(1 * time.Second)
 		return c.SendString("Hello, Fiber!")
 	})
 
+	app.Use(customMiddleware)
+
 	app.Get("/about", func(c *fiber.Ctx) error {
-		return c.SendString("About page")
+		println("about")
+		return c.SendString("About page 2")
 	})
 
 	log.Fatal(app.Listen(":8080"))
