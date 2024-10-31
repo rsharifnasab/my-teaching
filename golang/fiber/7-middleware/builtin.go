@@ -11,17 +11,23 @@ import (
 func main() {
 	app := fiber.New()
 
-	app.Use(logger.New(logger.Config{}))
+	// example of nested groups
+	groupLogs := app.Group("/logs")
+	group := groupLogs.Group("/inner")
 
-	app.Use(recover.New())
+	group.Use(logger.New(logger.Config{}))
+	group.Use(recover.New())
 
-	app.Get("/", func(c *fiber.Ctx) error {
+	group.Get("/", func(c *fiber.Ctx) error {
 		return c.SendString("Hello, world!")
 	})
 
-	app.Get("/panic", func(c *fiber.Ctx) error {
-		panic("something went wrong!")
-	})
+	app.Get("/panic",
+		// recover.New(), // register MW for only one handler
+		func(c *fiber.Ctx) error {
+			panic("something went wrong!")
+		},
+	)
 
 	log.Fatal(app.Listen(":8080"))
 }
