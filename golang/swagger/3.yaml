@@ -1,0 +1,82 @@
+---
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Weak API Design Example
+  description: Demonstration of weak API design practices
+
+paths:
+  /create-user:
+    get:
+      summary: Create a new user
+      description: This endpoint creates a new user.
+      operationId: createUser
+      responses:
+        '201':
+          description: User created successfully
+        '400':
+          description: Invalid input
+      parameters:
+        - name: X-Auth-Token
+          in: header
+          required: true
+          schema:
+            type: string
+            example: "some-auth-token"
+
+  /update-user/{userId}:
+    post:
+      summary: Update user information
+      description: This endpoint updates user information.
+      operationId: updateUser
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: X-Auth-Token
+          in: header
+          required: true
+          schema:
+            type: string
+            example: "some-auth-token"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                email:
+                  type: string
+      responses:
+        '200':
+          description: User updated successfully
+        '404':
+          description: User not found
+
+  /deleteUser/{userId}:
+    get:
+      summary: Delete a user
+      description: This endpoint deletes a user.
+      operationId: deleteUser
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: X-Auth-Token
+          in: header
+          required: true
+          schema:
+            type: string
+            example: "some-auth-token"
+      responses:
+        '204':
+          description: User deleted successfully
+        '404':
+          description: User not found
