@@ -21,10 +21,6 @@ func main() {
 	models.Migrate(db)
 
 	app := fiber.New()
-	app.Get(`/:test<int>`, func(c *fiber.Ctx) error {
-		return c.SendString(c.Params("test"))
-	})
-
 	v1 := app.Group("/v1")
 
 	server.Register(v1)
