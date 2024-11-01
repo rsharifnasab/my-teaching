@@ -21,6 +21,7 @@ func main() {
 	app.Use(logger.New())
 
 	app.Get("/items", paginatedItems)
+	app.Get("/items-cursor", cursorBasedItems)
 
 	log.Fatal(app.Listen(":3000"))
 }
@@ -62,3 +63,44 @@ func paginatedItems(c *fiber.Ctx) error {
 }
 
 // GET http://localhost:3000/items?page=1&limit=5
+
+func cursorBasedItems(c *fiber.Ctx) error {
+	cursor, err := strconv.Atoi(c.Query("cursor", "0"))
+	if err != nil || cursor < 0 {
+		cursor = 0
+	}
+
+	limit, err := strconv.Atoi(c.Query("limit", "5"))
+	if err != nil || limit < 1 {
+		limit = 5
+	}
+
+	if cursor >= len(items) {
+		return c.JSON(fiber.Map{
+			"cursor": cursor,
+			"limit":  limit,
+			"items":  []string{},
+			"error":  "No more items",
+		})
+	}
+
+	end := cursor + limit
+	if end > len(items) {
+		end = len(items)
+	}
+
+	paginatedItems := items[cursor:end]
+
+	var nextCursor *int
+	if end < len(items) {
+		nextCursorVal := end
+		nextCursor = &nextCursorVal
+	}
+
+	return c.JSON(fiber.Map{
+		"cursor":     cursor,
+		"limit":      limit,
+		"items":      paginatedItems,
+		"nextCursor": nextCursor, // This will be nil if there are no more items
+	})
+}
