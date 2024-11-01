@@ -104,3 +104,9 @@ func cursorBasedItems(c *fiber.Ctx) error {
 		"nextCursor": nextCursor, // This will be nil if there are no more items
 	})
 }
+
+// cursor pagination in db
+// SELECT id, name FROM items WHERE id > ? ORDER BY id ASC LIMIT ?
+
+// limit offset pagination in db:
+// SELECT id, name FROM items ORDER BY id LIMIT ? OFFSET ?
