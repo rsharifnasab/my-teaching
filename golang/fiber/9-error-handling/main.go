@@ -12,7 +12,7 @@ func main() {
 	app := fiber.New(fiber.Config{
 		ErrorHandler: func(ctx *fiber.Ctx, err error) error {
 			code := fiber.StatusInternalServerError
-			return ctx.Status(code).SendString(err.Error())
+			return ctx.Status(code).SendString("roozbeh error: " + err.Error())
 		},
 	})
 

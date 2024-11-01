@@ -11,12 +11,13 @@ import (
 
 func main() {
 	app := fiber.New()
-	app.Use(logger.New())
+	app.Use(logger.New(logger.Config{}))
 
 	// Or extend your config for customization
 	app.Use(limiter.New(limiter.Config{
 		Next: func(c *fiber.Ctx) bool {
-			return c.IP() == "127.0.0.1"
+			// return c.IP() == "127.0.0.1"
+			return false
 		},
 
 		Max: 2,
