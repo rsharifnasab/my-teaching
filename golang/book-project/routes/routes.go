@@ -1,12 +1,15 @@
 package routes
 
 import (
+	"encoding/json"
 	"errors"
 	"fmt"
 	"net/http"
 	"strconv"
 
 	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/log"
+	"github.com/gofiber/fiber/v2/utils"
 	"gorm-postgres/models"
 	"gorm-postgres/repository"
 )
@@ -57,6 +60,7 @@ func (server *HTTPServer) ErrorHandler(c *fiber.Ctx, err error) error {
 func (server *HTTPServer) Register(app fiber.Router) {
 	app.Get("/", server.Hello)
 	app.Post("/books", server.AddBook)
+	app.Post("/books-async", server.AddBookAsync)
 	app.Get("/books", server.AllBooks)
 
 	app.Get("/books/error", server.ErrorCreator)
@@ -97,6 +101,29 @@ func (server *HTTPServer) GetBookByID(c *fiber.Ctx) error {
 	}
 
 	return c.JSON(bookResponse)
+}
+
+func (server *HTTPServer) AddBookAsync(c *fiber.Ctx) error {
+	bodyBytes := utils.CopyBytes(c.Body())
+	book := &AddBookRequest{}
+	if err := json.Unmarshal(bodyBytes, book); err != nil {
+		return c.SendStatus(400)
+	}
+
+	go func(book *AddBookRequest) {
+		newBook := models.Book{
+			Title:  book.Title,
+			Author: book.Author,
+		}
+
+		_, err := server.Repo.Add(newBook)
+		if err != nil {
+			log.Error("async add book encountered error: %s", err.Error())
+			return
+		}
+	}(book)
+
+	return c.SendString("ok")
 }
 
 func (server *HTTPServer) AddBook(c *fiber.Ctx) error {
