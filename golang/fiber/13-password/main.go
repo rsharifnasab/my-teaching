@@ -31,6 +31,8 @@ func main() {
 			})
 		}
 
+		// [salt][hash(password + pepper + salt)]
+		// [salt][hash(password + salt)]
 		hashedPassword, err := bcrypt.GenerateFromPassword([]byte(req.Password), bcrypt.DefaultCost)
 		if err != nil {
 			return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
