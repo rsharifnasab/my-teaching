@@ -10,13 +10,19 @@ import (
 
 func main() {
 	apiApp := fiber.New()
+
 	apiApp.Use(logger.New())
+
 	apiApp.Use(cors.New(cors.Config{
-		AllowOrigins: "http://localhost:3000",
+		AllowOrigins: "http://localhost:3000", //, http://127.0.0.1:3000",
 		AllowMethods: "GET",
 	}))
+
 	apiApp.Get("/api", func(c *fiber.Ctx) error {
-		return c.SendString("This is data from the API server.")
+		return c.SendString("This is data from the API server. (GET)")
+	})
+	apiApp.Post("/api", func(c *fiber.Ctx) error {
+		return c.SendString("This is data from the API server. (POST)")
 	})
 
 	go func() {

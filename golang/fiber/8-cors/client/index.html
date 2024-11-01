@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CORS Demo - Client</title>
+    <script>
+      // Function to make a get request to a different origin
+      function makeCorsRequestGET() {
+        const url = "http://localhost:4000/api"; // Different origin
+
+        fetch(url)
+          .then((response) => {
+            if (response.ok) {
+              return response.text();
+            } else {
+              throw new Error("Network response was not OK");
+            }
+          })
+          .then((data) => {
+            document.getElementById("output-get").textContent = data;
+          })
+          .catch((error) => {
+            document.getElementById("output-get").textContent =
+              "Error: " + error.message;
+          });
+      }
+      // Function to make a POST request to a different origin
+      function makeCorsRequestPOST() {
+        const url = "http://localhost:4000/api"; // Different origin
+
+        // Data to send in the POST request body
+        const requestData = {
+          key1: "value1",
+          key2: "value2",
+        };
+
+        fetch(url, {
+          method: "POST", // Specify that this is a POST request
+          headers: {
+            "Content-Type": "application/json", // Specify the content type as JSON
+          },
+          body: JSON.stringify(requestData), // Convert the request data to a JSON string
+        })
+          .then((response) => {
+            if (response.ok) {
+              return response.text(); // If the response is OK, return the response text
+            } else {
+              throw new Error("Network response was not OK");
+            }
+          })
+          .then((data) => {
+            document.getElementById("output-post").textContent = data; // Display the response data
+          })
+          .catch((error) => {
+            document.getElementById("output-post").textContent =
+              "Error: " + error.message; // Handle errors
+          });
+      }
+    </script>
+  </head>
+  <body>
+    <h1>CORS Demo - Client</h1>
+    <button onclick="makeCorsRequestGET()">Make CORS GET Request</button>
+    <p id="output-get">GET response will appear here.</p>
+
+    <button onclick="makeCorsRequestPOST()">Make CORS POST Request</button>
+    <p id="output-post">POST response will appear here.</p>
+  </body>
+</html>
