@@ -64,6 +64,9 @@ func paginatedItems(c *fiber.Ctx) error {
 
 // GET http://localhost:3000/items?page=1&limit=5
 
+// limit offset pagination in db:
+// SELECT id, name FROM items ORDER BY id LIMIT ? OFFSET ?
+
 func cursorBasedItems(c *fiber.Ctx) error {
 	cursor, err := strconv.Atoi(c.Query("cursor", "0"))
 	if err != nil || cursor < 0 {
@@ -107,6 +110,3 @@ func cursorBasedItems(c *fiber.Ctx) error {
 
 // cursor pagination in db
 // SELECT id, name FROM items WHERE id > ? ORDER BY id ASC LIMIT ?
-
-// limit offset pagination in db:
-// SELECT id, name FROM items ORDER BY id LIMIT ? OFFSET ?

@@ -8,6 +8,7 @@ import (
 	"github.com/gofiber/fiber/v2/middleware/logger"
 )
 
+// mutable shared state
 var global int
 
 func main() {
