@@ -47,8 +47,8 @@ func consumeMessages(ch *amqp.Channel, queueName string) {
 
 			time.Sleep(1 * time.Second)
 			log.Printf("Received a message: %s", d.Body)
-			// d.Ack(false)
-			d.Nack(false, true)
+			d.Ack(false)
+			// d.Nack(false, true)
 		}
 	}()
 
@@ -65,20 +65,6 @@ func main() {
 	defer ch.Close() // TODO: check err
 
 	queueName := "test_queue"
-
-	q, err := ch.QueueDeclare(
-		queueName, // name
-		false,     // durable
-		false,     // delete when unused
-		false,     // exclusive
-		false,     // no-wait
-		amqp.Table{
-			//	"queue-type":  "classic",
-			"message-ttl": 10_000_000,
-		},
-	)
-	println(q.Name)
-	failOnError(err, "Failed to declare a queue")
 
 	body := "Hello RabbitMQ!"
 
