@@ -6,20 +6,23 @@ import (
 	amqp "github.com/rabbitmq/amqp091-go"
 )
 
-// failOnError is a helper function to check for errors and log them
 func failOnError(err error, msg string) {
 	if err != nil {
 		log.Fatalf("%s: %s", msg, err)
 	}
 }
 
-// publishMessage publishes a message to the specified queue
-func publishMessage(ch *amqp.Channel, queueName, body string) {
+func publishMessage(
+	ch *amqp.Channel,
+	exchangeName,
+	routingKey,
+	body string,
+) {
 	err := ch.Publish(
-		"",        // exchange
-		queueName, // routing key (queue name)
-		false,     // mandatory
-		false,     // immediate
+		exchangeName, // exchange
+		routingKey,   // routing key
+		false,        // mandatory
+		false,        // immediate
 		amqp.Publishing{
 			ContentType: "text/plain",
 			Body:        []byte(body),
@@ -28,10 +31,9 @@ func publishMessage(ch *amqp.Channel, queueName, body string) {
 	log.Printf(" [x] Sent %s", body)
 }
 
-// consumeMessages sets up a consumer to receive messages from the queue
 func consumeMessages(ch *amqp.Channel, queueName string) {
 	msgs, err := ch.Consume(
-		queueName, // queue
+		queueName, // queue name
 		"",        // consumer
 		true,      // auto-ack
 		false,     // exclusive
@@ -41,24 +43,48 @@ func consumeMessages(ch *amqp.Channel, queueName string) {
 	)
 	failOnError(err, "Failed to register a consumer")
 
+	forever := make(chan bool)
+
 	go func() {
 		for d := range msgs {
 			log.Printf("Received a message: %s", d.Body)
-			d.Ack(false)
 		}
 	}()
 
 	log.Printf(" [*] Waiting for messages. To exit press CTRL+C")
+	<-forever
 }
 
 func main() {
 	conn, err := amqp.Dial("amqp://guest:guest@localhost:5672/")
 	failOnError(err, "Failed to connect to RabbitMQ")
-	defer conn.Close()
+	defer func() {
+		err := conn.Close()
+		if err != nil {
+			log.Fatal(err.Error())
+		}
+	}()
 
 	ch, err := conn.Channel()
 	failOnError(err, "Failed to open a channel")
-	defer ch.Close() // todo: check err
+	defer func() {
+		err := ch.Close()
+		if err != nil {
+			log.Fatal(err.Error())
+		}
+	}()
+
+	exchangeName := "test_exchange"
+	err = ch.ExchangeDeclare(
+		exchangeName, // name
+		"direct",     // type
+		true,         // durable
+		false,        // auto-deleted when unused
+		false,        // internal
+		false,        // no-wait
+		nil,          // arguments
+	)
+	failOnError(err, "Failed to declare an exchange")
 
 	queueName := "test_queue"
 	q, err := ch.QueueDeclare(
@@ -69,13 +95,19 @@ func main() {
 		false,     // no-wait
 		nil,       // arguments
 	)
-	println(q.Name)
 	failOnError(err, "Failed to declare a queue")
 
-	body := "Hello RabbitMQ!"
+	routingKey := "test_key"
+	err = ch.QueueBind(
+		q.Name,       // queue name
+		routingKey,   // routing key
+		exchangeName, // exchange name
+		false,        // no-wait
+		nil,          // arguments
+	)
+	failOnError(err, "Failed to bind the queue to the exchange")
 
-	consumeMessages(ch, queueName)
-	publishMessage(ch, queueName, body)
-
-	select {}
+	body := "Hello RabbitMQ via Exchange!"
+	publishMessage(ch, exchangeName, routingKey, body)
+	consumeMessages(ch, q.Name)
 }
