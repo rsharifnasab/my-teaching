@@ -17,26 +17,33 @@ func main() {
 
 	subject := "service.request"
 
-	go func() {
-		nc.Subscribe(subject, func(m *nats.Msg) {
-			fmt.Printf("Received request: %s\n", string(m.Data))
+	for i := range 2 {
+		go func(number int) {
+			nc.Subscribe(subject, func(m *nats.Msg) {
+				fmt.Printf("Received request (%d): %s\n",
+					number, string(m.Data))
 
-			// Can by dynamic
-			response := "Here is your response!"
-			err := nc.Publish(m.Reply, []byte(response))
-			if err != nil {
-				log.Fatal(err)
-			}
-			fmt.Printf("Sent reply: %s\n", response)
-		})
+				// Can by dynamic
+				response := fmt.Sprintf("Here is your late response from %d", number)
+				err := nc.Publish(m.Reply, []byte(response))
+				if err != nil {
+					log.Fatal(err)
+				}
+				fmt.Printf("Sent reply: %s\n", response)
+			})
 
-		// Keep the listener running
-		select {}
-	}()
+			// Keep the listener running
+			select {}
+		}(i)
+	}
 
 	time.Sleep(1 * time.Second)
 
-	msg, err := nc.Request(subject, []byte("Hello, can I get a response?"), 2*time.Second)
+	msg, err := nc.Request(
+		subject,
+		[]byte("Hello, can I get a response?"),
+		2*time.Second,
+	)
 	if err != nil {
 		log.Fatal(err)
 	}
