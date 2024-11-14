@@ -16,3 +16,6 @@ nats sub "mst.txt" --dump "./received-messages"
 nats subscribe --count 10 -s another-address:4222 topic
 
 nats sub -s localhost:4222 --user=USER --password=PASSWORD
+
+nats reply help.please 'OK, I CAN HELP!!!'
+nats request help.please 'I need help!'
