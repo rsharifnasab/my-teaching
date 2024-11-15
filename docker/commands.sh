@@ -13,7 +13,10 @@ docker run alpine:latest
 docker run -it ubuntu:latest /bin/sh
 docker run -it alpine:latest /bin/sh
 
+# base tools of alpine
 docker run --rm -it busybox:latest sh
+
+docker exec -it ID /bin/sh
 
 docker ps
 dockre ps -a
@@ -33,6 +36,9 @@ docker build -t
 docker login
 docker push
 
+docker run --entry-point /bin/sh -it ubuntu:latest
+docker builder prune
+
 docker logs --follow ID
 docker logs --tail ID
 docker inspect ID
@@ -50,6 +56,8 @@ docker system df
 
 docker save -o /tmp/nginx.tar nginx:latest
 docker load -i /tmp/nginx
+
+docker rm $(docker ps -a -q)
 
 docker build . -t my-app -f 1.dockerfile
 docker run -it my-app
