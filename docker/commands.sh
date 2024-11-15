@@ -31,14 +31,15 @@ docker rmi ID
 docker kill ID
 docker stop ID
 
-docker build
-docker build -t
+docker build .
+docker build . -t my-app
 docker login
 docker push
 
 docker run --entry-point /bin/sh -it ubuntu:latest
 docker builder prune
 
+docker attach ID
 docker logs --follow ID
 docker logs --tail ID
 docker inspect ID
@@ -51,11 +52,11 @@ docker start ID
 docker pause ID
 docker unpause ID
 
-# clean disk:
+# check docker disk usage
 docker system df
 
 docker save -o /tmp/nginx.tar nginx:latest
-docker load -i /tmp/nginx
+docker load -i /tmp/nginx.tar
 
 docker rm $(docker ps -a -q)
 
@@ -68,9 +69,12 @@ docker volume inspect NAME
 docker volume rm NAME
 docker volume prune
 
-docker run -d -v NAME:/var/lib/mysql mysql
+#                                     | image name
+#                       | mount path in container
+#                 | volome name
+docker run -it -v NAME:/data my-app
 docker run -d -v /path/on/host:/path/in/container my-app
-docker run -d -v /data busybox # anon volume
+docker run -ti -v /data busybox # anon volume
 
 docker run -d -p 8080:80 nginx
 
