@@ -61,3 +61,28 @@ docker rm $(docker ps -a -q)
 
 docker build . -t my-app -f 1.dockerfile
 docker run -it my-app
+
+docker volume ls
+docker volume create NAME
+docker volume inspect NAME
+docker volume rm NAME
+docker volume prune
+
+docker run -d -v NAME:/var/lib/mysql mysql
+docker run -d -v /path/on/host:/path/in/container my-app
+docker run -d -v /data busybox # anon volume
+
+docker run -d -p 8080:80 nginx
+
+docker network ls
+docker network inspect bridge
+docker network create my_network
+docker network rm my_network
+docker network connect my_network ID
+docker network disconnect my_network ID
+docker run --network my_network -d nginx:latest
+
+docker run --network my_network --name web nginx
+docker run --network my_network --name db mysql
+docker run --network my_network --name web --network-alias web2 nginx # both web and web2
+# ping db
