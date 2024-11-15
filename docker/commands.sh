@@ -50,3 +50,6 @@ docker system df
 
 docker save -o /tmp/nginx.tar nginx:latest
 docker load -i /tmp/nginx
+
+docker build . -t my-app -f 1.dockerfile
+docker run -it my-app
