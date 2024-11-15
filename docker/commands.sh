@@ -13,7 +13,7 @@ docker run alpine:latest
 docker run -it ubuntu:latest /bin/sh
 docker run -it alpine:latest /bin/sh
 
-docker run -it busybox:latest sh
+docker run --rm -it busybox:latest sh
 
 docker ps
 dockre ps -a
